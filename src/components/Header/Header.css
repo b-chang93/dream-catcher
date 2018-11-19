@@ -1,0 +1,17 @@
+.Header {
+  height: 50px;
+  background: white;
+  color: #555555;
+  position: relative;
+  font-weight: 700;
+  margin-bottom: 7px;
+  margin-left: 5px;
+  margin-top: 10px;
+  font-size: 38px;
+}
+
+.jumbotron_title {
+  text-decoration: none;
+  color: #86c5da;
+  line-height: 50px;
+}
