@@ -1,0 +1,35 @@
+.post_panel {
+  height: 100%;
+  background: white;
+  box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+}
+
+.post_info {
+  border-bottom: 1px solid #ddd;
+}
+
+.dream_title {
+  padding: 15px;
+  text-align: center;
+}
+
+.story {
+  margin: 10px;
+  padding: 20px;
+}
+
+.post_button_container {
+  padding: 15px;
+}
+
+.post_comment_btn {
+  background-color: #86c5da;
+  border-color: #46b8da;
+}
+
+@media only screen and (min-width: 700px) {
+  .post_panel {
+    margin: auto;
+    box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+  }
+}

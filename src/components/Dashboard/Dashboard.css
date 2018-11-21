@@ -1,0 +1,12 @@
+.Dashboard {
+  /* background: white; */
+  height: 100%;
+}
+
+.My_Dreams {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  padding: 25px;
+  background: white;
+}
