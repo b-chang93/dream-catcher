@@ -4,7 +4,7 @@ const initialState = {
   dreams: [
     {
       title: 'Example Dream 1',
-      content: 'Example 1 content of the dream',
+      content: 'Lorem ipsum dolor amet whatever tbh chillwave, next level franzen literally squid truffaut pickled normcore. Slow-carb ugh neutra mlkshk mixtape. Readymade cold-pressed viral 3 wolf moon, normcore raclette taxidermy hoodie. DIY post-ironic polaroid glossier biodiesel whatever, pitchfork pickled waistcoat crucifix. Chambray try-hard man bun gochujang fanny pack yuccie. Next level retro truffaut slow-carb biodiesel typewriter. Four loko keytar direct trade intelligentsia everyday carry.',
       comments: [
         {text: 'Example comment 1'},
         {text: 'Example comment 2'}
@@ -12,7 +12,23 @@ const initialState = {
     },
     {
       title: 'Example Dream 2',
-      content: 'Example 2 content of the dream',
+      content: 'Lorem ipsum dolor amet whatever tbh chillwave, next level franzen literally squid truffaut pickled normcore. Slow-carb ugh neutra mlkshk mixtape. Readymade cold-pressed viral 3 wolf moon, normcore raclette taxidermy hoodie. DIY post-ironic polaroid glossier biodiesel whatever, pitchfork pickled waistcoat crucifix. Chambray try-hard man bun gochujang fanny pack yuccie. Next level retro truffaut slow-carb biodiesel typewriter. Four loko keytar direct trade intelligentsia everyday carry.',
+      comments: [
+        {text: 'Example comment 1'},
+        {text: 'Example comment 2'}
+      ]
+    },
+    {
+      title: 'Example Dream 3',
+      content: 'Lorem ipsum dolor amet whatever tbh chillwave, next level franzen literally squid truffaut pickled normcore. Slow-carb ugh neutra mlkshk mixtape. Readymade cold-pressed viral 3 wolf moon, normcore raclette taxidermy hoodie. DIY post-ironic polaroid glossier biodiesel whatever, pitchfork pickled waistcoat crucifix. Chambray try-hard man bun gochujang fanny pack yuccie. Next level retro truffaut slow-carb biodiesel typewriter. Four loko keytar direct trade intelligentsia everyday carry.',
+      comments: [
+        {text: 'Example comment 1'},
+        {text: 'Example comment 2'}
+      ]
+    },
+    {
+      title: 'Example Dream 4',
+      content: 'Lorem ipsum dolor amet whatever tbh chillwave, next level franzen literally squid truffaut pickled normcore. Slow-carb ugh neutra mlkshk mixtape. Readymade cold-pressed viral 3 wolf moon, normcore raclette taxidermy hoodie. DIY post-ironic polaroid glossier biodiesel whatever, pitchfork pickled waistcoat crucifix. Chambray try-hard man bun gochujang fanny pack yuccie. Next level retro truffaut slow-carb biodiesel typewriter. Four loko keytar direct trade intelligentsia everyday carry.',
       comments: [
         {text: 'Example comment 1'},
         {text: 'Example comment 2'}
