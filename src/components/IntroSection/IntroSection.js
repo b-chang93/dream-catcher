@@ -7,7 +7,7 @@ export default function InfoSection() {
     <div className="intro_section">
       <div className="intro_info_point">
         <h3>Jot down your dreams</h3>
-        <h5>Work with others to perfect the phrasing of that sentence or paragraph you need for your project. Share and be notified real-time of suggestions, comments, and revisions while you collaborate.</h5>
+        <h5>Ever have a really good dream, but you can't seem to remember all the details later when you want to share it? Worry not! Easily write down your dreams anytime, anywhere.</h5>
       </div>
       <div className="intro_info_point">
         <h3>Mobile-friendly</h3>
@@ -15,7 +15,7 @@ export default function InfoSection() {
       </div>
       <div className="intro_info_point">
         <h3>Share your dreams or make them private</h3>
-        <h5>Skip the slides. If you're leading a class, meeting, or a brainstorming session, put your project on a projector and invite others to share ideas onto the screen using their smartphones. Enlarge text by clicking on posts or comments. </h5>
+        <h5>Share your dreams publicly, with friends, or make it private so it can only be seen by you!</h5>
       </div>
     </div>
   );
