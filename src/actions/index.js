@@ -1,3 +1,5 @@
+import {API_BASE_URL} from '../config';
+
 export const ADD_DREAM= 'ADD_DREAM';
 export const addDream = (title, text) => ({
     type: ADD_DREAM,
@@ -25,3 +27,22 @@ export const deleteDream = (text, dreamIndex) => ({
   text,
   dreamIndex
 });
+
+export const FETCH_DREAM_SUCCESS = 'FETCH_DREAM_SUCCESS';
+export const fetchDreamSuccess = dreams => ({
+  type: FETCH_DREAM_SUCCESS,
+  dreams
+});
+
+export const fetchDream = () => dispatch => {
+    fetch(`${API_BASE_URL}/posts`)
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(res.statusText);
+            }
+            return res.json();
+        })
+        .then(dream => {
+          dispatch(fetchDreamSuccess(dream));
+        });
+};
