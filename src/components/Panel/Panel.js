@@ -5,6 +5,8 @@ import logo from '../../assets/dreaming.png'
 import IntroSection from '../IntroSection/IntroSection'
 import LoginForm from '../LoginForm/LoginForm'
 import SignUpForm from '../SignUpForm/SignUpForm'
+import RegistrationPage from '../RegistrationPage/RegistrationPage'
+// import RegistrationForm from '../RegistrationForm/RegistrationForm'
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -61,7 +63,7 @@ export default class Panel extends React.Component {
             </div>
             <main>
               <Route exact path="/login" component={LoginForm} />
-              <Route exact path="/signup" component={SignUpForm} />
+              <Route exact path="/signup" component={RegistrationPage} />
             </main>
           </div>
           <div className="panel_body">

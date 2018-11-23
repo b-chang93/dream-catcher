@@ -28,8 +28,6 @@ export class DreamContainer extends React.Component {
       </li>
     ));
 
-    console.log(this.props)
-
     return (
       <div className="DreamContainer">
         <button

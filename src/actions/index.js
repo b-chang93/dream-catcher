@@ -36,13 +36,13 @@ export const fetchDreamSuccess = dreams => ({
 
 export const fetchDream = () => dispatch => {
     fetch(`${API_BASE_URL}/posts`)
-        .then(res => {
-            if (!res.ok) {
-                return Promise.reject(res.statusText);
-            }
-            return res.json();
-        })
-        .then(dream => {
-          dispatch(fetchDreamSuccess(dream));
-        });
+      .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(dream => {
+        dispatch(fetchDreamSuccess(dream));
+      });
 };
