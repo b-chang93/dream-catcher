@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import AppForm from '../AppForm/AppForm.js'
 import Header from '../Header/Header.js'
 
-class App extends Component {
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Dashboard from '../Dashboard/Dashboard.js'
+
+export default class App extends React.Component {
   render() {
     return (
-      <div className="row">
-        <Header title='Dream Catcher'/>
-        <AppForm />
-      </div>
+      <Router>
+        <div className="row">
+          <Header title='Dream Catcher'/>
+          <Route exact path="/" component={AppForm} />
+          <Route exact path="/dashboard" component={Dashboard} />
+        </div>
+      </Router>
     );
   }
 }
-
-export default App;
