@@ -31,13 +31,9 @@ export const dreamReducer = (state=initialState, action) => {
     });
   }
   else if (action.type === actions.FETCH_DREAM_SUCCESS) {
-    console.log(action)
     return Object.assign({}, state, {
       dreams: [...action.dreams]
     });
-    console.log(action.dreams)
-    return action.dreams;
   }
-
   return state;
 };
