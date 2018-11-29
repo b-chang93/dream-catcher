@@ -3,9 +3,11 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './Panel.css'
 import logo from '../../assets/dreaming.png'
 import IntroSection from '../IntroSection/IntroSection'
-import LoginForm from '../LoginForm/LoginForm'
+// import LoginForm from '../LoginForm/LoginForm'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import RegistrationPage from '../RegistrationPage/RegistrationPage'
+import LandingPage from '../LandingPage/LandingPage'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import RegistrationForm from '../RegistrationForm/RegistrationForm'
 
 export default class Panel extends React.Component {
@@ -62,7 +64,7 @@ export default class Panel extends React.Component {
               </button>
             </div>
             <main>
-              <Route exact path="/login" component={LoginForm} />
+              <Route exact path="/login" component={LandingPage} />
               <Route exact path="/signup" component={RegistrationPage} />
             </main>
           </div>
@@ -71,7 +73,8 @@ export default class Panel extends React.Component {
               <div className="demo_button_wraper">
                 <h3>Never forget your dreams again.</h3>
                 <div className="button-container">
-                  <button className="demo btn">Demo Dreams</button>
+                  <button className="demo btn">
+                  <span className="homepage-icons"><FontAwesomeIcon icon="bed"/></span>Demo Dreams</button>
                 </div>
               </div>
               <div className="img-container">

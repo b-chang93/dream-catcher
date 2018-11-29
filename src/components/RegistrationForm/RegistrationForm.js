@@ -24,9 +24,19 @@ export class RegistrationForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 <label htmlFor="firstName">First name</label>
-                <Field className="user-first-name" component={Input} type="text" name="firstName" />
+                <Field
+                  className="user-first-name"
+                  component={Input}
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"/>
                 <label htmlFor="lastName">Last name</label>
-                <Field className="user-last-name" component={Input} type="text" name="lastName" />
+                <Field
+                  className="user-last-name"
+                  component={Input}
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"/>
                 <label htmlFor="username">Username</label>
                 <Field
                     className="signup-username"
@@ -34,6 +44,7 @@ export class RegistrationForm extends React.Component {
                     type="text"
                     name="username"
                     validate={[required, nonEmpty, isTrimmed]}
+                    placeholder="username"
                 />
                 <label htmlFor="password">Password</label>
                 <Field
@@ -42,6 +53,7 @@ export class RegistrationForm extends React.Component {
                     type="password"
                     name="password"
                     validate={[required, passwordLength, isTrimmed]}
+                    placeholder="password"
                 />
                 <label htmlFor="passwordConfirm">Confirm password</label>
                 <Field
@@ -49,9 +61,11 @@ export class RegistrationForm extends React.Component {
                     type="password"
                     name="passwordConfirm"
                     validate={[required, nonEmpty, matchesPassword]}
+                    placeholder="confirm password"
                 />
                 <button
                     type="submit"
+                    className="login-button"
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
                 </button>
