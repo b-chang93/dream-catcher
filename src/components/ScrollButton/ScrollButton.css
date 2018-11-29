@@ -32,7 +32,7 @@ a {
 
 .arrow-up {
   color: white;
-  font-size: 40px;
+  font-size: 30px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }

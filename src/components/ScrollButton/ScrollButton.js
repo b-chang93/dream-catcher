@@ -1,6 +1,6 @@
 import React from 'react';
 import FA from 'react-fontawesome';
-import { Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './ScrollButton.css'
 
 export default class ScrollButton extends React.Component {
@@ -27,7 +27,7 @@ export default class ScrollButton extends React.Component {
   render () {
       return <button title='Back to top' className='scroll'
                onClick={ () => { this.scrollToTop(); }}>
-                <span className='arrow-up glyphicon glyphicon-chevron-up'>^</span>
+                <span className='arrow-up glyphicon glyphicon-chevron-up'><FontAwesomeIcon icon="angle-double-up" /></span>
               </button>;
    }
 }

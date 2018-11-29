@@ -6,3 +6,7 @@
   background-color: #86c5da;
   border-color: #46b8da;
 }
+
+.post-icons svg {
+  margin: 0 10px;
+}
