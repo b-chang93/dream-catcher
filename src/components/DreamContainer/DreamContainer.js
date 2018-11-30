@@ -17,7 +17,7 @@ export default function DreamContainer(props){
 
   const dreams = props.fetchedData.dreams.map((dream, index) => (
     <li className="post_item" key={index}>
-        <Post index={index} {...dream} />
+      <Post index={index} {...dream} />
     </li>
   ));
   return (
