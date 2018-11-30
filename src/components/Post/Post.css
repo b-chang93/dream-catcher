@@ -2,6 +2,7 @@
   height: 100%;
   background: white;
   box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+  margin: 15px auto;
 }
 
 .post_info {
@@ -11,11 +12,29 @@
 .post_heading {
   background-color: #fcf8e3;
   border-color: #faebcc;
+  /* display: flex;
+  justify-content: flex-end; */
 }
 
 .dream_title {
+  margin-top: 0;
   padding: 15px;
   text-align: center;
+  /* background-color: #003366; */
+  /* flex-grow: 1; */
+}
+
+.create-by {
+  /* width: 50%; */
+  font-size: 20px;
+  font-weight: bold;
+  /* background-color: #faebcc; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.creator {
+  padding: 10px 10px;
 }
 
 .story {
@@ -54,7 +73,7 @@ textarea {
   }
 
   .post_panel {
-    margin: auto;
+    margin: 15px auto;
     box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
   }
 }
