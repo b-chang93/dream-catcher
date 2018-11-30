@@ -8,7 +8,8 @@ export default class PostForm extends React.Component {
     this.state = {
       editing: false,
       commenting: false,
-      comments: false
+      comments: false,
+      content: this.props.content
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -41,13 +42,17 @@ export default class PostForm extends React.Component {
     });
   };
 
-  render() {
-    console.log(this.props.comments)
+  updateDreamContent(value){
+    this.setState({
+      content: value
+    });
+  }
 
-    const commentsOnPost = this.props.comments.map((comment) => {
+  render() {
+    const commentsOnPost = this.props.comments.map((comment, index) => {
       return(
-        <ul className="all_comments">
-          <li className="user_comment">{comment}</li>
+        <ul className="all_comments" key={index}>
+          <li className="user_comment" index={index}>{comment}</li>
         </ul>)
     });
     const numberComments = this.props.comments.length;
@@ -60,7 +65,6 @@ export default class PostForm extends React.Component {
     let commentsList;
 
     if (enableComments) {
-      // enableEditing = false;
       showCommentBox =
       <div className="comment_container">
         <form className="post_form">
@@ -73,11 +77,10 @@ export default class PostForm extends React.Component {
     };
 
     if (enableEditing) {
-      // enableComments = false;
       showEditBox =
       <div className="comment_container">
         <form className="post_form">
-          <textarea placeholder="Remember more about your dream? Edit it!"></textarea>
+          <textarea value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
           <button className="btn comment">Edit</button>
         </form>
       </div>

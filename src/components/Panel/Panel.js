@@ -6,7 +6,6 @@ import IntroSection from '../IntroSection/IntroSection'
 import RegistrationPage from '../RegistrationPage/RegistrationPage'
 import LandingPage from '../LandingPage/LandingPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import RegistrationForm from '../RegistrationForm/RegistrationForm'
 
 export default class Panel extends React.Component {
   constructor(props) {
