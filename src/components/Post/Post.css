@@ -12,29 +12,31 @@
 .post_heading {
   background-color: #fcf8e3;
   border-color: #faebcc;
-  /* display: flex;
-  justify-content: flex-end; */
 }
 
 .dream_title {
   margin-top: 0;
   padding: 15px;
   text-align: center;
-  /* background-color: #003366; */
-  /* flex-grow: 1; */
 }
 
 .create-by {
-  /* width: 50%; */
   font-size: 20px;
   font-weight: bold;
-  /* background-color: #faebcc; */
   display: flex;
   justify-content: flex-end;
+  padding: 5px 0;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
 }
 
 .creator {
   padding: 10px 10px;
+  line-height: 15px;
 }
 
 .story {
@@ -64,7 +66,7 @@ textarea {
 
 @media only screen and (min-width: 700px) {
   textarea {
-    width: 95%;
+    width: 94%;
     padding: 10px 18px;
   }
 
