@@ -12,7 +12,6 @@ export class Dashboard extends React.Component {
   render() {
     return (
       <div className="Dashboard">
-        <header className="My_Dreams">My Dreams</header>
         <DreamContainer fetchedData={this.props.dreams}/>
       </div>
     );

@@ -4,6 +4,7 @@ import './DreamContainer.css'
 import Post from '../Post/Post'
 import {addDream, fetchDream} from '../../actions';
 import ScrollButton from '../ScrollButton/ScrollButton'
+import DreamForm from '../DreamForm/DreamForm'
 
 export default function DreamContainer(props){
   let scrollBtn;
@@ -23,9 +24,7 @@ export default function DreamContainer(props){
   ));
   return (
     <div className="DreamContainer">
-      <button
-        // onAdd={title => this.addList(title)}
-        className="btn create_dream">Dreaming</button>
+      <DreamForm />
       <ul className="dreams_post_list">{dreams}</ul>
       <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
     </div>

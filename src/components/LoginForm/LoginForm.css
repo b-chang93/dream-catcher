@@ -46,6 +46,10 @@ input[type="text"], input[type="password"] {
     margin-bottom: 0;
 }
 
+.access_form {
+  text-align: center;
+}
+
 @media only screen and (min-width: 700px) {
 
   .login-button {
