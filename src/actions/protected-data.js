@@ -13,6 +13,18 @@ export const fetchProtectedDataError = error => ({
     error
 });
 
+export const FETCH_DREAM_SUCCESS = 'FETCH_DREAM_SUCCESS';
+export const fetchDreamSuccess = dreams => ({
+  type: FETCH_DREAM_SUCCESS,
+  dreams
+});
+
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
+export const fetchUserSuccess = user => ({
+  type: FETCH_USER_SUCCESS,
+  user
+});
+
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/protected`, {
@@ -29,3 +41,41 @@ export const fetchProtectedData = () => (dispatch, getState) => {
             dispatch(fetchProtectedDataError(err));
         });
 };
+
+export const fetchDream = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    fetch(`${API_BASE_URL}/posts`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(dream => {
+        dispatch(fetchDreamSuccess(dream));
+      });
+}
+
+export const fetchUser = (username) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    fetch(`${API_BASE_URL}/users/username/${username}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(dream => {
+        dispatch(fetchUserSuccess(dream));
+      });
+}

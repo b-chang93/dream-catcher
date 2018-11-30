@@ -2,11 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Dashboard.css';
 import DreamContainer from '../DreamContainer/DreamContainer'
-import {fetchDream} from '../../actions';
+import {fetchProtectedData} from '../../actions/protected-data';
+import {fetchDream} from '../../actions/protected-data';
+import {fetchUser} from '../../actions/protected-data';
+import requiresLogin from '../RequiresLogin';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchDream());
+    this.props.dispatch(fetchProtectedData());
+    this.props.dispatch(fetchUser(this.props.username));
   }
 
   render() {
@@ -22,8 +27,14 @@ Dashboard.defaultProps = {
   title: 'Dream Board'
 };
 
-const mapStateToProps = state => ({
-  dreams: state.dreams
-});
+const mapStateToProps = state => {
+  const {currentUser} = state.auth;
+  return {
+    username: state.auth.currentUser.username,
+    name: `${currentUser.firstName} ${currentUser.lastName}`,
+    protectedData: state.protectedData.data,
+    dreams: state.dreams
+  };
+};
 
-export default connect(mapStateToProps)(Dashboard);
+export default requiresLogin()(connect(mapStateToProps)(Dashboard));
