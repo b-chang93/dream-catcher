@@ -8,9 +8,9 @@ import Dashboard from '../Dashboard/Dashboard.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faKey } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faSignOutAlt, faKey } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faKey)
+library.add(faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faSignOutAlt, faKey)
 
 export default class App extends React.Component {
   render() {
