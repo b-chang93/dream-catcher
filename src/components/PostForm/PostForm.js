@@ -7,7 +7,8 @@ export default class PostForm extends React.Component {
     super(props);
     this.state = {
       editing: false,
-      commenting: false
+      commenting: false,
+      comments: false
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -34,11 +35,29 @@ export default class PostForm extends React.Component {
     });
   };
 
+  showComments() {
+    this.setState({
+      comments: !this.state.comments
+    });
+  };
+
   render() {
+    console.log(this.props.comments)
+
+    const commentsOnPost = this.props.comments.map((comment) => {
+      return(
+        <ul className="all_comments">
+          <li className="user_comment">{comment}</li>
+        </ul>)
+    });
+    const numberComments = this.props.comments.length;
     const enableEditing = this.state.editing;
     const enableComments = this.state.commenting;
     let showCommentBox;
     let showEditBox;
+
+    const showComments = this.state.comments;
+    let commentsList;
 
     if (enableComments) {
       // enableEditing = false;
@@ -48,6 +67,8 @@ export default class PostForm extends React.Component {
           <textarea placeholder="Leave a comment about the dream!"></textarea>
           <button className="btn comment">Leave Comment</button>
         </form>
+        <h2 className="comments_section">Comments</h2>
+        {commentsOnPost}
       </div>
     };
 
@@ -76,7 +97,7 @@ export default class PostForm extends React.Component {
         <button
           onClick={() => this.setCommenting()}
           className="btn post_comment_btn">{!enableComments ?
-            <span className="post-icons"><FontAwesomeIcon icon="comments"/>Comment</span>:
+            <span className="post-icons"><FontAwesomeIcon icon="comments"/>Comment ({numberComments})</span>:
             <span className="post-icons"><FontAwesomeIcon icon="times-circle"/>Close</span>}
         </button>
         {showCommentBox}

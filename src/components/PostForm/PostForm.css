@@ -10,3 +10,19 @@
 .post-icons svg {
   margin: 0 10px;
 }
+
+.all_comments {
+  list-style: none;
+}
+
+.comments_section {
+  text-align: center;
+}
+
+.user_comment {
+  padding: 25px;
+  font-size: 20px;
+  width: 90%;
+  box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+  margin: 15px auto;
+}

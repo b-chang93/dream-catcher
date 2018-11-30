@@ -17,8 +17,8 @@ a {
 
 .scroll {
   background-color: #003366;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -33,7 +33,18 @@ a {
 
 .arrow-up {
   color: white;
-  font-size: 30px;
+  font-size: 24px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+}
+
+@media only screen and (min-width: 700px) {
+  .scroll {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrow-up {
+    font-size: 30px;
+  }
 }
