@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect, Switch, Router, Route} from 'react-router-dom';
-
+import {Redirect} from 'react-router-dom';
 import LoginForm from '../LoginForm/LoginForm';
-import Dashboard from '../Dashboard/Dashboard'
 
 export function LandingPage(props) {
     if (props.loggedIn) {

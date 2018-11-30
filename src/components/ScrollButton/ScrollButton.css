@@ -24,6 +24,7 @@ a {
   right: 10px;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 
   &:hover {
     opacity: 1;

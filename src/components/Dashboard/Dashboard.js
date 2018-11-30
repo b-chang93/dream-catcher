@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Dashboard.css';
 import DreamContainer from '../DreamContainer/DreamContainer'
-import {addDream, fetchDream} from '../../actions';
+import {fetchDream} from '../../actions';
 
 export class Dashboard extends React.Component {
   componentDidMount() {

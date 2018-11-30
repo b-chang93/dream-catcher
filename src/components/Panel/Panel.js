@@ -3,8 +3,6 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './Panel.css'
 import logo from '../../assets/dreaming.png'
 import IntroSection from '../IntroSection/IntroSection'
-// import LoginForm from '../LoginForm/LoginForm'
-import SignUpForm from '../SignUpForm/SignUpForm'
 import RegistrationPage from '../RegistrationPage/RegistrationPage'
 import LandingPage from '../LandingPage/LandingPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -78,7 +76,7 @@ export default class Panel extends React.Component {
                 </div>
               </div>
               <div className="img-container">
-                <img className="image" src={logo}/>
+                <img className="image" src={logo} alt="app-logo"/>
               </div>
             </div>
           </div>

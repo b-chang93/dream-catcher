@@ -34,7 +34,6 @@ export class LoginForm extends React.Component {
                     id="username"
                     validate={[required, nonEmpty]}
                     placeholder="username"
-                    name="username"
                     className="username"
                     required
                 />
@@ -45,9 +44,7 @@ export class LoginForm extends React.Component {
                     name="password"
                     id="password"
                     validate={[required, nonEmpty]}
-                    type="password"
                     placeholder="password"
-                    name="password"
                     className="user-password"
                     required
                 />

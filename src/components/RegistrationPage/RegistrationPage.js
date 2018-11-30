@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
-
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
-import Dashboard from '../Dashboard/Dashboard'
 
 export function RegistrationPage(props) {
     if (props.loggedIn) {

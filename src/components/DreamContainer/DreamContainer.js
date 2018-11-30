@@ -1,8 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import './DreamContainer.css'
 import Post from '../Post/Post'
-import {addDream, fetchDream} from '../../actions';
 import ScrollButton from '../ScrollButton/ScrollButton'
 import DreamForm from '../DreamForm/DreamForm'
 
