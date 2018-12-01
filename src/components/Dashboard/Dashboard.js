@@ -2,9 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Dashboard.css';
 import DreamContainer from '../DreamContainer/DreamContainer'
-import {fetchProtectedData} from '../../actions/protected-data';
-import {fetchDream} from '../../actions/protected-data';
-import {fetchUser} from '../../actions/protected-data';
+import {fetchProtectedData, fetchDream, fetchUser} from '../../actions/protected-data';
 import requiresLogin from '../RequiresLogin';
 
 export class Dashboard extends React.Component {
