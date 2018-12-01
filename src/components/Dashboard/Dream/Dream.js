@@ -1,6 +1,6 @@
 import React from 'react';
-import './Post.css'
-import PostForm from '../PostForm/PostForm'
+import './Dream.css'
+import Panel from '../Panel/Panel'
 
 export default function Post(props) {
   return(
@@ -20,7 +20,7 @@ export default function Post(props) {
         </div>
         <p className="story">{props.content}</p>
       </div>
-      <PostForm content={props.content} comments={props.comments}/>
+      <Panel content={props.content} comments={props.comments}/>
     </div>
   );
 };

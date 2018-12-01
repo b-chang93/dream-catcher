@@ -1,8 +1,8 @@
 import React from 'react';
-import './PostForm.css'
+import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class PostForm extends React.Component {
+export default class Panel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,13 +26,15 @@ export default class PostForm extends React.Component {
 
   setEditing() {
     this.setState({
-      editing: !this.state.editing
+      editing: !this.state.editing,
+      commenting: false
     });
   };
 
   setCommenting() {
     this.setState({
-      commenting: !this.state.commenting
+      commenting: !this.state.commenting,
+      editing: false
     });
   };
 
@@ -81,7 +83,7 @@ export default class PostForm extends React.Component {
       <div className="comment_container">
         <form className="post_form">
           <textarea value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
-          <button className="btn comment">Edit</button>
+          <button className="btn comment">Save</button>
         </form>
       </div>
     };
