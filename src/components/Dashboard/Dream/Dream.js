@@ -1,5 +1,5 @@
 import React from 'react';
-import './Post.css'
+import './Dream.css'
 import PostForm from '../PostForm/PostForm'
 
 export default function Post(props) {
