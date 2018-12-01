@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import LoginForm from './LoginForm/LoginForm';
 
-export function LandingPage(props) {
+export function Login(props) {
     if (props.loggedIn) {
         console.log('redirecting...')
         return  (
@@ -21,4 +21,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(LandingPage);
+export default connect(mapStateToProps)(Login);
