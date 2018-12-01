@@ -4,7 +4,7 @@ import './Dashboard.css';
 import Dream from './Dream/Dream';
 import DreamForm from './DreamForm/DreamForm';
 import {fetchProtectedData, fetchDream, fetchUser} from '../../actions/protected-data';
-import ScrollButton from '../ScrollButton/ScrollButton'
+import ScrollButton from './ScrollButton/ScrollButton'
 import requiresLogin from '../RequiresLogin';
 
 export class Dashboard extends React.Component {

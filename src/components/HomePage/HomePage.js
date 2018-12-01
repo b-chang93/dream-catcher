@@ -2,8 +2,8 @@ import React from 'react';
 import './HomePage.css'
 import logo from '../../assets/dreaming.png'
 import IntroSection from './IntroSection/IntroSection'
-import RegistrationPage from './RegistrationPage/RegistrationPage'
-import LandingPage from './LandingPage/LandingPage'
+import SignUp from './SignUp/SignUp'
+import Login from './Login/Login'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class HomePage extends React.Component {
@@ -55,8 +55,8 @@ export default class HomePage extends React.Component {
             </button>
           </div>
           <main>
-            {this.state.showLoginForm &&  <LandingPage/>}
-            {this.state.showSignUpForm &&  <RegistrationPage/>}
+            {this.state.showLoginForm &&  <Login/>}
+            {this.state.showSignUpForm &&  <SignUp/>}
           </main>
         </div>
         <div className="homepage_body">
