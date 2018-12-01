@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 
-export function RegistrationPage(props) {
+function RegistrationPage(props) {
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }
@@ -20,4 +20,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(RegistrationForm);
+export default connect(mapStateToProps)(RegistrationPage);
