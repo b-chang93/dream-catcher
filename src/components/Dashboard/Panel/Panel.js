@@ -1,8 +1,8 @@
 import React from 'react';
-import './PostForm.css'
+import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class PostForm extends React.Component {
+export default class Panel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
