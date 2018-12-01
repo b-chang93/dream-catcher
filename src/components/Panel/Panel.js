@@ -1,7 +1,7 @@
 import React from 'react';
 import './Panel.css'
 import logo from '../../assets/dreaming.png'
-import IntroSection from '../IntroSection/IntroSection'
+import IntroSection from './IntroSection/IntroSection'
 import RegistrationPage from '../RegistrationPage/RegistrationPage'
 import LandingPage from '../LandingPage/LandingPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,14 +23,16 @@ export default class Panel extends React.Component {
   toggleLogin() {
     console.log(this.state.showLoginForm)
     this.setState({
-      showLoginForm: !this.state.showLoginForm
+      showLoginForm: !this.state.showLoginForm,
+      showSignUpForm: false
     });
   }
 
   toggleSignUp() {
     console.log(this.state.showSignUpForm)
     this.setState({
-      showSignUpForm: !this.state.showSignUpForm
+      showSignUpForm: !this.state.showSignUpForm,
+      showLoginForm: false
     });
   }
 
