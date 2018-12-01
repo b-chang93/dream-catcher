@@ -2,8 +2,8 @@ import React from 'react';
 import './HomePage.css'
 import logo from '../../assets/dreaming.png'
 import IntroSection from './IntroSection/IntroSection'
-import RegistrationPage from '../RegistrationPage/RegistrationPage'
-import LandingPage from '../LandingPage/LandingPage'
+import RegistrationPage from './RegistrationPage/RegistrationPage'
+import LandingPage from './LandingPage/LandingPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class HomePage extends React.Component {
