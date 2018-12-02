@@ -1,15 +1,18 @@
 import React from 'react';
 import './DreamForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {createDream} from '../../../actions/protected-data';
 
 export default class DreamForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      createDream: false
+      createDream: false,
+      dreams: []
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   onSubmit(event) {
@@ -25,20 +28,40 @@ export default class DreamForm extends React.Component {
     this.setState({
       createDream: !this.state.createDream
     });
-  };;
+  };
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const title = event.target.title.value;
+    const content = event.target.content.value;
+    this.props.dreamDetails.dispatch(createDream(title, content));
+  }
+
+  handleChange(event) {
+   this.setState({ [event.target.name]: event.target.value });
+  }
 
   render() {
     const enableCreateDream = this.state.createDream;
     let showCreateDreamField;
 
     if (enableCreateDream) {
-      // enableEditing = false;
       showCreateDreamField =
       <div className="comment_container">
-        <form className="post_form">
-          <input className="title_your_dream" placeholder="Title"></input>
-          <textarea placeholder="Write about your dream here!"></textarea>
-          <button className="btn create">Dream</button>
+        <form className="post_form"
+        onSubmit={this.handleSubmit}>
+          <input
+            ref={input => this.textInput = input}
+            className="title_your_dream"
+            placeholder="Title"
+            name="title"
+            >
+          </input>
+          <textarea
+          name="content"
+          placeholder="Write about your dream here!"
+          ></textarea>
+          <button type="submit" className="btn create">Dream</button>
         </form>
       </div>
     };

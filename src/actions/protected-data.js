@@ -25,6 +25,13 @@ export const fetchUserSuccess = user => ({
   user
 });
 
+export const API_CREATE_DREAM= 'API_CREATE_DREAM';
+export const apiCreateDream = (title, content) => ({
+    type: API_CREATE_DREAM,
+    title,
+    content
+});
+
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/protected`, {
@@ -58,6 +65,36 @@ export const fetchDream = () => (dispatch, getState) => {
       })
       .then(dream => {
         dispatch(fetchDreamSuccess(dream));
+      });
+}
+
+export const createDream = (title, content) => (dispatch, getState) => {
+    const data = {
+      title: title,
+      content: content,
+      creator: ''
+    }
+    const authToken = getState().auth.authToken;
+    fetch(`${API_BASE_URL}/posts`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        // return res.json();
+        return Promise.all([{status: res.status}, res.json()])
+      })
+      .then(dream => {
+        if(dream.status === 201) {
+          window.location.reload();
+          dispatch(apiCreateDream(dream));
+        }
       });
 }
 

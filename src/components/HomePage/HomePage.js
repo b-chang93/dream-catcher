@@ -21,7 +21,6 @@ export default class HomePage extends React.Component {
   }
 
   toggleLogin() {
-    console.log(this.state.showLoginForm)
     this.setState({
       showLoginForm: !this.state.showLoginForm,
       showSignUpForm: false
@@ -29,7 +28,6 @@ export default class HomePage extends React.Component {
   }
 
   toggleSignUp() {
-    console.log(this.state.showSignUpForm)
     this.setState({
       showSignUpForm: !this.state.showSignUpForm,
       showLoginForm: false

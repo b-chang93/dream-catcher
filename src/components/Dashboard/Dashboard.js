@@ -15,7 +15,6 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props.dreamsList.dreams.length)
     let scrollBtn;
     const dreamsArray = this.props.dreamsList.dreams;
 
@@ -34,7 +33,7 @@ export class Dashboard extends React.Component {
     return (
       <div className="Dashboard">
         <div className="DreamContainer">
-          <DreamForm />
+          <DreamForm dreamDetails={this.props}/>
           <ul className="dreams_post_list">{dreams}</ul>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
         </div>
