@@ -2,11 +2,11 @@ import React from 'react';
 import './Dream.css'
 import Panel from '../Panel/Panel'
 
-export default function Post(props) {
+export default function Dream(props) {
   return(
-    <div className="post_panel">
-      <div className="post_info">
-        <div className="post_heading">
+    <div className="dream_panel">
+      <div className="dream_info">
+        <div className="dream_heading">
           <h2 className="dream_title">{props.title}</h2>
           <div className="create-by">
             <img
