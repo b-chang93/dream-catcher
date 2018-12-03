@@ -35,7 +35,7 @@ export const fetchDreamSuccess = dreams => ({
 });
 
 export const fetchDream = () => dispatch => {
-    fetch(`${API_BASE_URL}/posts`)
+    fetch(`${API_BASE_URL}/dreams`)
       .then(res => {
         if (!res.ok) {
             return Promise.reject(res.statusText);

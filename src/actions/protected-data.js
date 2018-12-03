@@ -58,7 +58,7 @@ export const fetchProtectedData = () => (dispatch, getState) => {
 
 export const fetchDream = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/posts`, {
+  fetch(`${API_BASE_URL}/dreams`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`
@@ -82,7 +82,7 @@ export const createDream = (title, content) => (dispatch, getState) => {
     creator: ''
   }
   const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/posts`, {
+  fetch(`${API_BASE_URL}/dreams`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -111,7 +111,7 @@ export const updateDream = (title, content, id) => (dispatch, getState) => {
     creator: ''
   }
   const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/posts/${id}`, {
+  fetch(`${API_BASE_URL}/dreams/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
