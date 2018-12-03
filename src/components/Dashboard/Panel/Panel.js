@@ -2,6 +2,7 @@ import React from 'react';
 import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {updateDream} from '../../../actions/protected-data';
+import {createComment} from '../../../actions/protected-data';
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -11,11 +12,13 @@ export default class Panel extends React.Component {
       commenting: false,
       comments: false,
       title: this.props.title,
-      content: this.props.content
+      content: this.props.content,
+      text: ''
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.handleUpdateDream = this.handleUpdateDream.bind(this);
+    this.handleCreateComment = this.handleCreateComment.bind(this);
   };
 
   onSubmit(event) {
@@ -59,6 +62,12 @@ export default class Panel extends React.Component {
     });
   };
 
+  createComment(value){
+    this.setState({
+      text: value
+    });
+  };
+
   handleUpdateDream(event) {
     event.preventDefault();
     const id = event.target.id
@@ -67,12 +76,26 @@ export default class Panel extends React.Component {
     this.props.dreamDetails.dispatch(updateDream(title, content, id));
   }
 
+  handleCreateComment(event) {
+    event.preventDefault();
+    const id = event.target.id;
+    const comment = event.target.text.value;
+    this.props.dreamDetails.dispatch(createComment(comment, id));
+  }
+
   render() {
     const commentsOnPost = this.props.comments.map((comment, index) => {
       return(
-        <ul className="all_comments" key={index}>
-          <li className="user_comment" index={index}>{comment.text}</li>
-        </ul>)
+        <div className="all_comments" key={index}>
+          <div className="user_comment" index={index}>
+            <img
+              src={comment.creator.avatar}
+              className="user_avatar_in_comment"
+              alt="user-avatar"
+            />
+            <div className="comment_text">{comment.creator.firstName} {comment.creator.lastName} {comment.text}</div>
+          </div>
+        </div>)
     });
     const numberComments = this.props.comments.length;
     const enableEditing = this.state.editing;
@@ -86,8 +109,13 @@ export default class Panel extends React.Component {
     if (enableComments) {
       showCommentBox =
       <div className="comment_container">
-        <form className="dream_form">
-          <textarea className="dream_updateable_fields" placeholder="Leave a comment about the dream!"></textarea>
+        <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleCreateComment}>
+          <textarea
+            className="dream_updateable_fields"
+            name="text"
+            placeholder="Leave a comment about the dream!"
+            value={this.state.text}
+            onChange={e => this.createComment(e.target.value)}></textarea>
           <button className="btn comment">Leave Comment</button>
         </form>
         <h2 className="comments_section">Comments</h2>
@@ -99,8 +127,16 @@ export default class Panel extends React.Component {
       showEditBox =
       <div className="comment_container">
         <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleUpdateDream}>
-          <input className="dream_title_field" name="title" value={this.state.title} onChange={e => this.updateDreamTitle(e.target.value)}></input>
-          <textarea className="dream_updateable_fields" name="content" value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
+          <input
+            className="dream_title_field"
+            name="title"
+            value={this.state.title}
+            onChange={e => this.updateDreamTitle(e.target.value)}></input>
+          <textarea
+            className="dream_updateable_fields"
+            name="content"
+            value={this.state.content}
+            onChange={e => this.updateDreamContent(e.target.value)}></textarea>
           <button className="btn comment">Save</button>
         </form>
       </div>
