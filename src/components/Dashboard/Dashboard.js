@@ -26,7 +26,7 @@ export class Dashboard extends React.Component {
     }
     const dreams = dreamsArray.map((dream, index) => (
       <li className="post_item" key={index}>
-        <Dream index={index} {...dream} />
+        <Dream dreamDetails={this.props} index={index} {...dream} />
       </li>
     ));
 

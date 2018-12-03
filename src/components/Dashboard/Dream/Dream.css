@@ -59,7 +59,7 @@
   width: 100%;
 }
 
-.create_dream_title, .create_dream_content {
+.dream_title_field, .create_dream_content {
   background: url('../../../assets/notebook.png') repeat-y;
   background-size: 100% 30px;
   width: 95%;
@@ -70,7 +70,7 @@
   border: solid 1px #ddd;
 }
 
-.create_dream_title {
+.dream_title_field {
   height: 27px;
   margin-bottom: 3px;
   line-height: 0;
@@ -95,7 +95,7 @@ textarea {
     padding: 4px 18px;
   }
 
-  .create_dream_title, .create_dream_content {
+  .dream_title_field, .create_dream_content {
     width: 97%;
     padding-left: 20px;
   }

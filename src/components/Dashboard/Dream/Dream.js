@@ -20,7 +20,7 @@ export default function Dream(props) {
         </div>
         <p className="story">{props.content}</p>
       </div>
-      <Panel content={props.content} comments={props.comments}/>
+      <Panel dreamId={props.id} dreamDetails={props.dreamDetails} title={props.title} content={props.content} comments={props.comments}/>
     </div>
   );
 };

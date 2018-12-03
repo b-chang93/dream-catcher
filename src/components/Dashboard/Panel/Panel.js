@@ -1,6 +1,7 @@
 import React from 'react';
 import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {updateDream} from '../../../actions/protected-data';
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -9,10 +10,12 @@ export default class Panel extends React.Component {
       editing: false,
       commenting: false,
       comments: false,
+      title: this.props.title,
       content: this.props.content
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleUpdateDream = this.handleUpdateDream.bind(this);
   };
 
   onSubmit(event) {
@@ -44,10 +47,24 @@ export default class Panel extends React.Component {
     });
   };
 
+  updateDreamTitle(value){
+    this.setState({
+      title: value
+    });
+  };
+
   updateDreamContent(value){
     this.setState({
       content: value
     });
+  };
+
+  handleUpdateDream(event) {
+    event.preventDefault();
+    const id = event.target.id
+    const title = event.target.title.value;
+    const content = event.target.content.value;
+    this.props.dreamDetails.dispatch(updateDream(title, content, id));
   }
 
   render() {
@@ -81,8 +98,9 @@ export default class Panel extends React.Component {
     if (enableEditing) {
       showEditBox =
       <div className="comment_container">
-        <form className="dream_form">
-          <textarea className="dream_updateable_fields" value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
+        <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleUpdateDream}>
+          <input className="dream_title_field" name="title" value={this.state.title} onChange={e => this.updateDreamTitle(e.target.value)}></input>
+          <textarea className="dream_updateable_fields" name="content" value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
           <button className="btn comment">Save</button>
         </form>
       </div>

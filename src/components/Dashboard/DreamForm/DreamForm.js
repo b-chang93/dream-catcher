@@ -37,9 +37,9 @@ export default class DreamForm extends React.Component {
     this.props.dreamDetails.dispatch(createDream(title, content));
   }
 
-  handleChange(event) {
-   this.setState({ [event.target.name]: event.target.value });
-  }
+  // handleChange(event) {
+  //  this.setState({ [event.target.name]: event.target.value });
+  // }
 
   render() {
     const enableCreateDream = this.state.createDream;
@@ -55,7 +55,7 @@ export default class DreamForm extends React.Component {
             className="title_your_dream"
             placeholder="Title"
             name="title"
-            className="create_dream_title">
+            className="dream_title_field">
           </input>
           <textarea
           name="content"
