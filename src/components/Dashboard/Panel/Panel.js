@@ -69,8 +69,8 @@ export default class Panel extends React.Component {
     if (enableComments) {
       showCommentBox =
       <div className="comment_container">
-        <form className="post_form">
-          <textarea placeholder="Leave a comment about the dream!"></textarea>
+        <form className="dream_form">
+          <textarea className="dream_updateable_fields" placeholder="Leave a comment about the dream!"></textarea>
           <button className="btn comment">Leave Comment</button>
         </form>
         <h2 className="comments_section">Comments</h2>
@@ -81,8 +81,8 @@ export default class Panel extends React.Component {
     if (enableEditing) {
       showEditBox =
       <div className="comment_container">
-        <form className="post_form">
-          <textarea value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
+        <form className="dream_form">
+          <textarea className="dream_updateable_fields" value={this.state.content} onChange={e => this.updateDreamContent(e.target.value)}></textarea>
           <button className="btn comment">Save</button>
         </form>
       </div>

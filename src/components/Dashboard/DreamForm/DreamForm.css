@@ -1,6 +1,6 @@
 .dream_button_container {
   background-color: #e3e3e3;
-  padding: 20px;
+  padding: 10px;
 }
 
 .create {
@@ -22,5 +22,9 @@
     padding: 10px 18px;
     margin: 5px auto 10px;
     font-size: 16px;
+  }
+
+  .dream_button_container {
+    padding: 20px;
   }
 }

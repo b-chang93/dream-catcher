@@ -31,7 +31,7 @@
   border-color: #004d99;
   color: white;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px;
   width: 50%;
 }
@@ -95,5 +95,9 @@ h3 {
 
   .img-container {
     width: 50%;
+  }
+
+  .btn {
+    font-size: 18px;
   }
 }
