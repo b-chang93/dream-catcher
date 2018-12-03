@@ -71,7 +71,7 @@ export default class Panel extends React.Component {
     const commentsOnPost = this.props.comments.map((comment, index) => {
       return(
         <ul className="all_comments" key={index}>
-          <li className="user_comment" index={index}>{comment}</li>
+          <li className="user_comment" index={index}>{comment.text}</li>
         </ul>)
     });
     const numberComments = this.props.comments.length;
