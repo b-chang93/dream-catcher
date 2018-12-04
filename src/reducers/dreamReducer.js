@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import * as actions from '../actions/dream';
 
 const initialState = {
   dreams: []
@@ -7,7 +7,7 @@ const initialState = {
 export const dreamReducer = (state=initialState, action) => {
   if (action.type === actions.ADD_DREAM) {
     return Object.assign({}, state, {
-      dreams: [...state.dreams, {
+      dreams: [...state, {
         title: action.title,
         content: action.content,
         comments: []
