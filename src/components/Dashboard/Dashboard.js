@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import './Dashboard.css';
 import Dream from './Dream/Dream';
 import DreamForm from './DreamForm/DreamForm';
-import {fetchProtectedData, fetchDream, fetchUser} from '../../actions/protected-data';
+import {fetchProtectedData, fetchUser} from '../../actions/protected-data';
+import {fetchDream} from '../../actions/dream';
 import ScrollButton from './ScrollButton/ScrollButton'
 import requiresLogin from '../RequiresLogin';
 
@@ -26,14 +27,14 @@ export class Dashboard extends React.Component {
     }
     const dreams = dreamsArray.map((dream, index) => (
       <li className="post_item" key={index}>
-        <Dream dreamDetails={this.props} index={index} {...dream} />
+        <Dream index={index} dream={dream} dispatch={this.props.dispatch}/>
       </li>
     ));
 
     return (
       <div className="Dashboard">
         <div className="DreamContainer">
-          <DreamForm dreamDetails={this.props}/>
+          <DreamForm dispatch={this.props.dispatch}/>
           <ul className="dreams_post_list">{dreams}</ul>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
         </div>

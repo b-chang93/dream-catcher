@@ -1,7 +1,7 @@
 import React from 'react';
 import './DreamForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {createDream} from '../../../actions/protected-data';
+import {createDream} from '../../../actions/dream';
 
 export default class DreamForm extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export default class DreamForm extends React.Component {
     event.preventDefault();
     const title = event.target.title.value;
     const content = event.target.content.value;
-    this.props.dreamDetails.dispatch(createDream(title, content));
+    this.props.dispatch(createDream(title, content));
   }
 
   // handleChange(event) {
@@ -42,6 +42,7 @@ export default class DreamForm extends React.Component {
   // }
 
   render() {
+    // console.log(this.props)
     const enableCreateDream = this.state.createDream;
     let showCreateDreamField;
 

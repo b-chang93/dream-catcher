@@ -44,9 +44,12 @@
   display: inline;
   line-height: 10px;
   position: absolute;
-  top: 25px;
-  padding: 20px 25px;
+  top: 10px;
+  padding: 10px 10px;
   box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+  font-size: 12px;
+  /* width: 60%; */
+  height: 30px;
 }
 
 @media only screen and (min-width: 700px) {
@@ -56,5 +59,15 @@
 
   .dream_updateable_fields {
     width: 95%;
+    padding-left: 25px;
+  }
+
+  .comment_text {
+    top: 25px;
+    padding: 20px 25px;
+    box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+    font-size: 18px;
+    /* width: 80%; */
+    height: 15px;
   }
 }
