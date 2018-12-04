@@ -1,7 +1,7 @@
 import React from 'react';
 import './DreamForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {createDream} from '../../../actions/protected-data';
+import {createDream} from '../../../actions/dream';
 
 export default class DreamForm extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class DreamForm extends React.Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDreamCreation = this.handleDreamCreation.bind(this);
   };
 
   onSubmit(event) {
@@ -30,16 +30,12 @@ export default class DreamForm extends React.Component {
     });
   };
 
-  handleSubmit(event) {
+  handleDreamCreation(event) {
     event.preventDefault();
     const title = event.target.title.value;
     const content = event.target.content.value;
-    this.props.dreamDetails.dispatch(createDream(title, content));
+    this.props.dispatch(createDream(title, content));
   }
-
-  // handleChange(event) {
-  //  this.setState({ [event.target.name]: event.target.value });
-  // }
 
   render() {
     const enableCreateDream = this.state.createDream;
@@ -49,7 +45,7 @@ export default class DreamForm extends React.Component {
       showCreateDreamField =
       <div className="comment_container">
         <form className="dream_form"
-        onSubmit={this.handleSubmit}>
+        onSubmit={this.handleDreamCreation}>
           <input
             ref={input => this.textInput = input}
             className="title_your_dream"
@@ -60,7 +56,7 @@ export default class DreamForm extends React.Component {
           <textarea
           name="content"
           placeholder="Write about your dream here!"
-          class="create_dream_content"
+          className="create_dream_content"
           ></textarea>
           <button type="submit" className="btn create">Dream</button>
         </form>

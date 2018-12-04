@@ -7,20 +7,26 @@ export default function Dream(props) {
     <div className="dream_panel">
       <div className="dream_info">
         <div className="dream_heading">
-          <h2 className="dream_title">{props.title}</h2>
+          <h2 className="dream_title">{props.dream.title}</h2>
           <div className="create-by">
             <img
             className="avatar"
-            src={props.creator.avatar}
+            src={props.dream.creator.avatar}
             alt="user-avatar"/>
             <span className="creator">
-              {props.creator.firstName} {props.creator.lastName}
+              {props.dream.creator.firstName} {props.dream.creator.lastName}
             </span>
           </div>
         </div>
-        <p className="story">{props.content}</p>
+        <p className="story">{props.dream.content}</p>
       </div>
-      <Panel dreamId={props.id} dreamDetails={props.dreamDetails} title={props.title} content={props.content} comments={props.comments}/>
+      <Panel
+        dispatch={props.dispatch}
+        userId={props.dream.creator._id}
+        dreamId={props.dream.id}
+        title={props.dream.title}
+        content={props.dream.content}
+        comments={props.dream.comments}/>
     </div>
   );
 };

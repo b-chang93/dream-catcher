@@ -1,8 +1,8 @@
 import React from 'react';
 import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {updateDream} from '../../../actions/protected-data';
-import {createComment} from '../../../actions/protected-data';
+import {editDream} from '../../../actions/dream';
+import {createComment} from '../../../actions/comment';
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -73,18 +73,23 @@ export default class Panel extends React.Component {
     const id = event.target.id
     const title = event.target.title.value;
     const content = event.target.content.value;
-    this.props.dreamDetails.dispatch(updateDream(title, content, id));
+    this.props.dispatch(editDream(title, content, id));
   }
 
   handleCreateComment(event) {
     event.preventDefault();
+    console.log(event.target)
+    const user = this.props.userId
     const id = event.target.id;
     const comment = event.target.text.value;
-    this.props.dreamDetails.dispatch(createComment(comment, id));
+    this.props.dispatch(createComment(comment, id));
   }
 
   render() {
+    // console.log(this.props)
+    // console.log(this.props)
     const commentsOnPost = this.props.comments.map((comment, index) => {
+      // console.log(comment)
       return(
         <div className="all_comments" key={index}>
           <div className="user_comment" index={index}>

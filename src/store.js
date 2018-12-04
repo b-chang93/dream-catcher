@@ -1,4 +1,4 @@
-import {dreamReducer} from './reducers';
+import {dreamReducer} from './reducers/dreamReducer';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
