@@ -7,17 +7,10 @@ export const addDream = (dream) => ({
     dream: dream
 });
 
-export const ADD_COMMENT = 'ADD_COMMENT';
-export const addComment = (text, dreamIndex) => ({
-    type: ADD_COMMENT,
-    text,
-    dreamIndex
-});
-
 export const UPDATE_DREAM = 'UPDATE_DREAM';
-export const updateDream = (text, dreamIndex) => ({
+export const updateDream = (dream, dreamIndex) => ({
   type: UPDATE_DREAM,
-  text,
+  dream: dream,
   dreamIndex
 });
 
@@ -32,6 +25,13 @@ export const FETCH_DREAM_SUCCESS = 'FETCH_DREAM_SUCCESS';
 export const fetchDreamSuccess = dreams => ({
   type: FETCH_DREAM_SUCCESS,
   dreams
+});
+
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const addComment = (text, dreamIndex) => ({
+    type: ADD_COMMENT,
+    text,
+    dreamIndex
 });
 
 export const fetchDream = () => (dispatch, getState) => {
@@ -80,11 +80,12 @@ export const createDream = (title, content) => (dispatch, getState) => {
 }
 
 export const editDream = (title, content, id) => (dispatch, getState) => {
+  console.log('updating dream...')
   const data = {
     title: title,
-    content: content,
-    creator: ''
+    content: content
   }
+
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/dreams/${id}`, {
     method: 'PUT',
@@ -98,11 +99,9 @@ export const editDream = (title, content, id) => (dispatch, getState) => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-      return Promise.all([{status: res.status}, res.json()])
+      return res.json();
     })
     .then(dream => {
-      if(dream.status === 201) {
-        dispatch(updateDream(dream));
-      }
+      dispatch(updateDream(dream));
     });
 }

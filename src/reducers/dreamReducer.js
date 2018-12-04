@@ -5,6 +5,8 @@ const initialState = {
 };
 
 export const dreamReducer = (state=initialState, action) => {
+  console.log(state)
+  console.log(action)
   if (action.type === actions.ADD_DREAM) {
     return Object.assign({}, state, {
       dreams: [...state.dreams, {
@@ -15,21 +17,14 @@ export const dreamReducer = (state=initialState, action) => {
       }]
     });
   }
-  else if (action.type === actions.ADD_COMMENT) {
-    let dreams = state.dreams.map((dream, index) => {
-      if (index !== action.dreamIndex) {
-        return dream;
-      }
-      return Object.assign({}, dream, {
-        comments: [...dream.comments, {
-          text: action.text
-        }]
-      });
+  else if (action.type === actions.UPDATE_DREAM) {
+    console.log(action.dream)
+    let updatedDream = state.dreams.map((dream, index) => {
+      console.log(dream.id === action.dream.id ? action.dream : dream)
+      return dream.id === action.dream.id ? action.dream : dream;
     });
 
-    return Object.assign({}, state, {
-      dreams
-    });
+    return Object.assign({}, state, {dreams: updatedDream});
   }
   else if (action.type === actions.FETCH_DREAM_SUCCESS) {
     return Object.assign({}, state, {
