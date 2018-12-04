@@ -2,10 +2,9 @@ import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const ADD_DREAM= 'ADD_DREAM';
-export const addDream = (title, text) => ({
+export const addDream = (dream) => ({
     type: ADD_DREAM,
-    title,
-    text
+    dream: dream
 });
 
 export const ADD_COMMENT = 'ADD_COMMENT';
@@ -55,6 +54,7 @@ export const fetchDream = () => (dispatch, getState) => {
 }
 
 export const createDream = (title, content) => (dispatch, getState) => {
+  console.log('dispatching create dream action...')
   const data = {
     title: title,
     content: content
@@ -72,13 +72,10 @@ export const createDream = (title, content) => (dispatch, getState) => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-      return Promise.all([{status: res.status}, res.json()])
+      return res.json();
     })
     .then(dream => {
-      if(dream.status === 201) {
-        window.location.reload();
-        dispatch(addDream(dream));
-      }
+      dispatch(addDream(dream));
     });
 }
 
@@ -105,7 +102,6 @@ export const editDream = (title, content, id) => (dispatch, getState) => {
     })
     .then(dream => {
       if(dream.status === 201) {
-        // window.location.reload();
         dispatch(updateDream(dream));
       }
     });

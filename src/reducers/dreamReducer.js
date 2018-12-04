@@ -7,9 +7,10 @@ const initialState = {
 export const dreamReducer = (state=initialState, action) => {
   if (action.type === actions.ADD_DREAM) {
     return Object.assign({}, state, {
-      dreams: [...state, {
-        title: action.title,
-        content: action.content,
+      dreams: [...state.dreams, {
+        title: action.dream.title,
+        content: action.dream.content,
+        creator: action.dream.creator,
         comments: []
       }]
     });
