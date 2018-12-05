@@ -1,12 +1,20 @@
 import * as actions from '../actions/dream';
+import * as actionComment from '../actions/comment';
 
+// const initialState = {
+//   dreams: [
+//     {
+//       dream: {
+//         comments: []
+//       }
+//     }
+//   ]
+// };
 const initialState = {
   dreams: []
 };
 
 export const dreamReducer = (state=initialState, action) => {
-  console.log(state)
-  console.log(action)
   if (action.type === actions.ADD_DREAM) {
     return Object.assign({}, state, {
       dreams: [...state.dreams, {
@@ -17,10 +25,13 @@ export const dreamReducer = (state=initialState, action) => {
       }]
     });
   }
+  else if (action.type === actionComment.ADD_COMMENT) {
+    return Object.assign({}, state, {
+      comments: [...action.dream.comments]
+    });
+  }
   else if (action.type === actions.UPDATE_DREAM) {
-    console.log(action.dream)
     let updatedDream = state.dreams.map((dream, index) => {
-      console.log(dream.id === action.dream.id ? action.dream : dream)
       return dream.id === action.dream.id ? action.dream : dream;
     });
 
@@ -31,5 +42,6 @@ export const dreamReducer = (state=initialState, action) => {
       dreams: [...action.dreams]
     });
   }
+  console.log(state);
   return state;
 };

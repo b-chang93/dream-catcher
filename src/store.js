@@ -1,4 +1,5 @@
 import {dreamReducer} from './reducers/dreamReducer';
+import {commentReducer} from './reducers/commentReducer';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
@@ -11,6 +12,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     combineReducers({
         dreams: dreamReducer,
+        // comment: commentReducer,
         form: formReducer,
         auth: authReducer,
         protectedData: protectedDataReducer

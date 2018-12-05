@@ -27,13 +27,6 @@ export const fetchDreamSuccess = dreams => ({
   dreams
 });
 
-export const ADD_COMMENT = 'ADD_COMMENT';
-export const addComment = (text, dreamIndex) => ({
-    type: ADD_COMMENT,
-    text,
-    dreamIndex
-});
-
 export const fetchDream = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/dreams`, {
@@ -80,7 +73,6 @@ export const createDream = (title, content) => (dispatch, getState) => {
 }
 
 export const editDream = (title, content, id) => (dispatch, getState) => {
-  console.log('updating dream...')
   const data = {
     title: title,
     content: content

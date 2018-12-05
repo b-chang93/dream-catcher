@@ -78,7 +78,6 @@ export default class Panel extends React.Component {
 
   handleCreateComment(event) {
     event.preventDefault();
-    console.log(event.target)
     const user = this.props.userId
     const id = event.target.id;
     const comment = event.target.text.value;
@@ -86,10 +85,7 @@ export default class Panel extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
-    // console.log(this.props)
     const commentsOnPost = this.props.comments.map((comment, index) => {
-      // console.log(comment)
       return(
         <div className="all_comments" key={index}>
           <div className="user_comment" index={index}>
