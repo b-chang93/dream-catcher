@@ -15,10 +15,10 @@ export const updateDream = (dream, dreamIndex) => ({
 });
 
 export const DELETE_DREAM = 'DELETE_DREAM';
-export const deleteDream = (text, dreamIndex) => ({
+export const deleteDream = (dream, id) => ({
   type: DELETE_DREAM,
-  text,
-  dreamIndex
+  dream,
+  id: id
 });
 
 export const FETCH_DREAM_SUCCESS = 'FETCH_DREAM_SUCCESS';
@@ -47,7 +47,6 @@ export const fetchDream = () => (dispatch, getState) => {
 }
 
 export const createDream = (title, content) => (dispatch, getState) => {
-  console.log('dispatching create dream action...')
   const data = {
     title: title,
     content: content
@@ -95,5 +94,28 @@ export const editDream = (title, content, id) => (dispatch, getState) => {
     })
     .then(dream => {
       dispatch(updateDream(dream));
+    });
+}
+
+export const removeDream = (id) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/dreams/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      // return res.json({message: 'Sucessfully deleted'});
+      return res;
+    })
+    .then(dream => {
+      console.log(dream)
+      console.log(id)
+      dispatch(deleteDream(dream, id));
     });
 }
