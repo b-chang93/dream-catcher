@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import requiresLogin from '../../RequiresLogin';
+import {clearAuth} from '../../../actions/auth';
+import {clearAuthToken} from '../../../local-storage';
 import './Logout.css';
 
 export class LogOut extends React.Component {
@@ -11,12 +13,10 @@ export class LogOut extends React.Component {
       loggedIn: this.props.loggedIn
     }
   };
-
-  logout(){
-    localStorage.clear();
-    this.setState({
-      loggedIn: false
-    })
+  
+  logOut() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
   }
 
   render() {
@@ -25,7 +25,7 @@ export class LogOut extends React.Component {
     let signOutButton;
     if(this.props.loggedIn) {
       signOutButton =
-        <button onClick={() => this.logout()} className="sign_out">
+        <button onClick={() => this.logOut()} className="sign_out">
           <span className="sign_out_icon"><FontAwesomeIcon icon="sign-out-alt" /></span>
         </button>
     }
