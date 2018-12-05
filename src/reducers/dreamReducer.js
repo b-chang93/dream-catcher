@@ -1,15 +1,6 @@
 import * as actions from '../actions/dream';
 import * as actionComment from '../actions/comment';
 
-// const initialState = {
-//   dreams: [
-//     {
-//       dream: {
-//         comments: []
-//       }
-//     }
-//   ]
-// };
 const initialState = {
   dreams: []
 };
@@ -37,11 +28,16 @@ export const dreamReducer = (state=initialState, action) => {
 
     return Object.assign({}, state, {dreams: updatedDream});
   }
+  else if (action.type === actions.DELETE_DREAM) {
+    let filterDreams = state.dreams.filter(dream => dream.id !== action.id);
+    return Object.assign({}, state, {
+      dreams: filterDreams
+    });
+  }
   else if (action.type === actions.FETCH_DREAM_SUCCESS) {
     return Object.assign({}, state, {
       dreams: [...action.dreams]
     });
   }
-  console.log(state);
   return state;
 };

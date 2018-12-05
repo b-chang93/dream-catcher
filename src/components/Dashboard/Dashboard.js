@@ -18,7 +18,6 @@ export class Dashboard extends React.Component {
   render() {
     let scrollBtn;
     const dreamsArray = this.props.dreamsList.dreams;
-
     if(dreamsArray.length > 1) {
       scrollBtn = <ScrollButton
       dreamsArray={dreamsArray}
