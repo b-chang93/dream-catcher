@@ -1,5 +1,4 @@
 import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
 
 export const ADD_COMMENT= 'ADD_COMMENT';
 export const addComment = (dream) => ({

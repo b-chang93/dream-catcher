@@ -1,5 +1,5 @@
 import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
+// import {normalizeResponseErrors} from './utils';
 
 export const ADD_DREAM= 'ADD_DREAM';
 export const addDream = (dream) => ({
@@ -114,8 +114,8 @@ export const removeDream = (id) => (dispatch, getState) => {
       return res;
     })
     .then(dream => {
-      console.log(dream)
-      console.log(id)
+      // console.log(dream)
+      // console.log(id)
       dispatch(deleteDream(dream, id));
     });
 }

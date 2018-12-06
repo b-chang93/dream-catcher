@@ -13,15 +13,15 @@ export class LogOut extends React.Component {
       loggedIn: this.props.loggedIn
     }
   };
-  
+
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state.loggedIn)
+    // console.log(this.props)
+    // console.log(this.state.loggedIn)
     let signOutButton;
     if(this.props.loggedIn) {
       signOutButton =

@@ -1,7 +1,5 @@
 import React from 'react';
 import './Header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import LogOut from '../LogOut'
 import Logout from './Logout/Logout'
 
 export default function Header(props) {
