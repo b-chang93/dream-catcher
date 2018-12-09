@@ -1,3 +1,4 @@
+import rootReducer from './reducers/rootReducer';
 import {dreamReducer} from './reducers/dreamReducer';
 import {commentReducer} from './reducers/commentReducer';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
@@ -12,7 +13,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     combineReducers({
         dreams: dreamReducer,
-        // comment: commentReducer,
+        comments: commentReducer,
+        rootDreams: rootReducer,
         form: formReducer,
         auth: authReducer,
         protectedData: protectedDataReducer

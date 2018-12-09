@@ -1,5 +1,4 @@
 import * as actions from '../actions/dream';
-import * as actionComment from '../actions/comment';
 
 const initialState = {
   dreams: []
@@ -14,11 +13,6 @@ export const dreamReducer = (state=initialState, action) => {
         creator: action.dream.creator,
         comments: []
       }]
-    });
-  }
-  else if (action.type === actionComment.ADD_COMMENT) {
-    return Object.assign({}, state, {
-      comments: [...action.dream.comments]
     });
   }
   else if (action.type === actions.UPDATE_DREAM) {

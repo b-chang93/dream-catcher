@@ -1,9 +1,9 @@
 import {API_BASE_URL} from '../config';
 
 export const ADD_COMMENT= 'ADD_COMMENT';
-export const addComment = (dream) => ({
+export const addComment = (comment) => ({
   type: ADD_COMMENT,
-  dream
+  comment
 });
 
 export const createComment = (text, id) => (dispatch, getState) => {
