@@ -4,34 +4,31 @@ const initialState = {
   dreams: []
 };
 
-export const dreamReducer = (state=initialState, action) => {
-  if (action.type === actions.ADD_DREAM) {
-    return Object.assign({}, state, {
-      dreams: [...state.dreams, {
+function dreamReducer(state=[], action) {
+  switch(action.type) {
+    case 'ADD_DREAM':
+      return [...state, {
+        id: action.dream.id,
         title: action.dream.title,
         content: action.dream.content,
         creator: action.dream.creator,
-        comments: []
-      }]
-    });
-  }
-  else if (action.type === actions.UPDATE_DREAM) {
-    let updatedDream = state.dreams.map((dream, index) => {
-      return dream.id === action.dream.id ? action.dream : dream;
-    });
+        comments: action.dream.comments
+      }];
+    case 'UPDATE_DREAM':
+      let updatedDream = state.map((dream, index) => {
+        return dream.id === action.dream.id ? action.dream : dream;
+      });
 
-    return Object.assign({}, state, {dreams: updatedDream});
+      return [...updatedDream];
+    case 'DELETE_DREAM':
+      let filterDreams = state.filter(dream => dream.id !== action.id);
+      return [...filterDreams]
+    case 'FETCH_DREAM_SUCCESS':
+      return [
+        ...state, ...action.dreams
+      ]
+    default:
+      return state;
   }
-  else if (action.type === actions.DELETE_DREAM) {
-    let filterDreams = state.dreams.filter(dream => dream.id !== action.id);
-    return Object.assign({}, state, {
-      dreams: filterDreams
-    });
-  }
-  else if (action.type === actions.FETCH_DREAM_SUCCESS) {
-    return Object.assign({}, state, {
-      dreams: [...action.dreams]
-    });
-  }
-  return state;
-};
+}
+export default dreamReducer;
