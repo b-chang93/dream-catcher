@@ -44,12 +44,6 @@ export default class Panel extends React.Component {
     });
   };
 
-  showComments() {
-    this.setState({
-      comments: !this.state.comments
-    });
-  };
-
   updateDreamTitle(value){
     this.setState({
       title: value
@@ -78,7 +72,6 @@ export default class Panel extends React.Component {
 
   handleCreateComment(event) {
     event.preventDefault();
-    const user = this.props.userId
     const id = event.target.id;
     const comment = event.target.text.value;
     this.props.dispatch(createComment(comment, id));
@@ -103,9 +96,6 @@ export default class Panel extends React.Component {
     const enableComments = this.state.commenting;
     let showCommentBox;
     let showEditBox;
-
-    const showComments = this.state.comments;
-    let commentsList;
 
     if (enableComments) {
       showCommentBox =

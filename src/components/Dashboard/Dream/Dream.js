@@ -31,10 +31,10 @@ export default class Dream extends React.Component {
       <div className="menu">
         <ul className="options">
           <li>
-            <a className="delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</a>
+            <button className="menu_btn delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</button>
           </li>
           <li>
-            <a className="private">Private</a>
+            <button className="menu_btn private">Private</button>
           </li>
         </ul>
       </div>
@@ -53,7 +53,7 @@ export default class Dream extends React.Component {
               <span className="creator">
                 {this.props.dream.creator.firstName} {this.props.dream.creator.lastName}
               </span>
-              <a className="menu_options" onClick={this.showMenu}>...</a>
+              <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
               {showMenu}
             </div>
           </div>

@@ -52,7 +52,8 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     protectedData: state.protectedData.data,
-    dreamsList: state.dreams
+    dreamsList: state.dreams,
+    rootDreams: state.rootDreams.dreamReducer
   };
 };
 

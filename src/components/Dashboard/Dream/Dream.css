@@ -80,6 +80,14 @@
   height: 300px;
 }
 
+.menu_btn {
+  background:none!important;
+  color:inherit;
+  border:none;
+  font: inherit;
+  cursor: pointer;
+}
+
 textarea {
   width: 98%;
   height: 120px;

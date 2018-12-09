@@ -48,10 +48,9 @@ export default class DreamForm extends React.Component {
         onSubmit={this.handleDreamCreation}>
           <input
             ref={input => this.textInput = input}
-            className="title_your_dream"
+            className="title_your_dream dream_title_field"
             placeholder="Title"
-            name="title"
-            className="dream_title_field">
+            name="title">
           </input>
           <textarea
           name="content"
