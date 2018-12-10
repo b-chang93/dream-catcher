@@ -1,7 +1,6 @@
 function commentReducer(state = [], action) {
   switch(action.type) {
     case 'ADD_COMMENT':
-      console.log(action.comment)
       return [...state, {
         id: action.comment.id,
         text: action.comment.text,
