@@ -5,28 +5,27 @@ import Dream from './Dream/Dream';
 import DreamForm from './DreamForm/DreamForm';
 import {fetchProtectedData, fetchUser} from '../../actions/protected-data';
 import {fetchDream} from '../../actions/dream';
+import {fetchComment} from '../../actions/comment';
 import ScrollButton from './ScrollButton/ScrollButton'
 import requiresLogin from '../RequiresLogin';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchDream());
+    this.props.dispatch(fetchComment());
     this.props.dispatch(fetchProtectedData());
     this.props.dispatch(fetchUser(this.props.username));
   }
 
   render() {
-    let scrollBtn;
-    const dreamsArray = this.props.dreamsList.dreams;
-    if(dreamsArray.length > 1) {
-      scrollBtn = <ScrollButton
-      dreamsArray={dreamsArray}
-      buttonText="Scroll to Top"
-      onClick={window.scrollTo(0, 0)}/>
-    }
+    const dreamsArray = this.props.dreams;
     const dreams = dreamsArray.map((dream, index) => (
       <li className="post_item" key={index}>
-        <Dream index={index} dream={dream} dispatch={this.props.dispatch}/>
+        <Dream
+          index={index}
+          dream={dream}
+          comments={this.props.comments.filter(comment => comment.dream === dream.id)}
+          dispatch={this.props.dispatch}/>
       </li>
     ));
 
@@ -52,8 +51,8 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     protectedData: state.protectedData.data,
-    dreamsList: state.dreams,
-    rootDreams: state.rootDreams.dreamReducer
+    dreams: state.dreams,
+    comments: state.comments
   };
 };
 

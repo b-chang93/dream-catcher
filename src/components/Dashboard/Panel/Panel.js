@@ -91,6 +91,25 @@ export default class Panel extends React.Component {
           </div>
         </div>)
     });
+
+    // const commentsOnPost = this.props.comments.filter((comment, index) => {
+    //   comment.dream === this.props.dreamId
+    //   return(
+    //     <div className="all_comments" key={index}>
+    //       <div className="user_comment" index={index}>
+    //         <img
+    //           src={comment.creator.avatar}
+    //           className="user_avatar_in_comment"
+    //           alt="user-avatar"
+    //         />
+    //         <div className="comment_text">{comment.creator.firstName} {comment.creator.lastName} {comment.text}</div>
+    //       </div>
+    //     </div>)
+    // });
+
+
+
+
     const numberComments = this.props.comments.length;
     const enableEditing = this.state.editing;
     const enableComments = this.state.commenting;

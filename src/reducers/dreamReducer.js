@@ -1,12 +1,7 @@
-import * as actions from '../actions/dream';
-
-const initialState = {
-  dreams: []
-};
-
 function dreamReducer(state=[], action) {
   switch(action.type) {
     case 'ADD_DREAM':
+        console.log(action.dream)
       return [...state, {
         id: action.dream.id,
         title: action.dream.title,

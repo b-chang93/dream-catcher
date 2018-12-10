@@ -65,7 +65,7 @@ export default class Dream extends React.Component {
           dreamId={this.props.dream.id}
           title={this.props.dream.title}
           content={this.props.dream.content}
-          comments={this.props.dream.comments}/>
+          comments={this.props.comments}/>
       </div>
     );
   }

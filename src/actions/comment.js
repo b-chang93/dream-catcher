@@ -6,6 +6,12 @@ export const addComment = (comment) => ({
   comment
 });
 
+export const FETCH_COMMENT_SUCCESS = 'FETCH_COMMENT_SUCCESS';
+export const fetchCommentSuccess = comments => ({
+  type: FETCH_COMMENT_SUCCESS,
+  comments
+});
+
 export const createComment = (text, id) => (dispatch, getState) => {
   const data = {
     text: text
@@ -28,5 +34,24 @@ export const createComment = (text, id) => (dispatch, getState) => {
     })
     .then(comment => {
       dispatch(addComment(comment));
+    });
+}
+
+export const fetchComment = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/comments`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(comment => {
+      dispatch(fetchCommentSuccess(comment));
     });
 }
