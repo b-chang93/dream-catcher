@@ -25,7 +25,8 @@ export default class Dream extends React.Component {
   }
 
   render() {
-    // console.log(this.props.dream.creator._id)
+    let dreamAuthorId = this.props.dream.creator._id
+    let optionsMenu = <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
     let showMenu;
     if(this.state.menu) {
       showMenu =
@@ -41,8 +42,6 @@ export default class Dream extends React.Component {
       </div>
     }
 
-    // if(userId != )
-
     return(
       <div className="dream_panel">
         <div className="dream_info">
@@ -56,7 +55,7 @@ export default class Dream extends React.Component {
               <span className="creator">
                 {this.props.dream.creator.firstName} {this.props.dream.creator.lastName}
               </span>
-              <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
+              {this.props.userLoggedIn === dreamAuthorId? optionsMenu: null}
               {showMenu}
             </div>
           </div>
