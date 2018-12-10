@@ -92,24 +92,6 @@ export default class Panel extends React.Component {
         </div>)
     });
 
-    // const commentsOnPost = this.props.comments.filter((comment, index) => {
-    //   comment.dream === this.props.dreamId
-    //   return(
-    //     <div className="all_comments" key={index}>
-    //       <div className="user_comment" index={index}>
-    //         <img
-    //           src={comment.creator.avatar}
-    //           className="user_avatar_in_comment"
-    //           alt="user-avatar"
-    //         />
-    //         <div className="comment_text">{comment.creator.firstName} {comment.creator.lastName} {comment.text}</div>
-    //       </div>
-    //     </div>)
-    // });
-
-
-
-
     const numberComments = this.props.comments.length;
     const enableEditing = this.state.editing;
     const enableComments = this.state.commenting;
@@ -133,7 +115,9 @@ export default class Panel extends React.Component {
       </div>
     };
 
-    if (enableEditing) {
+    if (this.props.userLoggedIn !== this.props.dreamAuthor) {
+
+    } else if (enableEditing) {
       showEditBox =
       <div className="comment_container">
         <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleUpdateDream}>
@@ -152,11 +136,10 @@ export default class Panel extends React.Component {
       </div>
     };
 
-
-
     return(
       <div className="post_button_container">
         <button
+          style={{ display: this.props.userLoggedIn !== this.props.dreamAuthor? 'none': 'inline'}}
           onClick={() => this.setEditing()}
           className="btn post_edit_btn">
           {!enableEditing ?
@@ -164,6 +147,7 @@ export default class Panel extends React.Component {
             <span className="post-icons"><FontAwesomeIcon icon="times-circle"/>Close</span>}
         </button>
         <button
+          style={{ width: this.props.userLoggedIn !== this.props.dreamAuthor? '100%': '50%'}}
           onClick={() => this.setCommenting()}
           className="btn post_comment_btn">{!enableComments ?
             <span className="post-icons"><FontAwesomeIcon icon="comments"/>Comment ({numberComments})</span>:

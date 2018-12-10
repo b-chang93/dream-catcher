@@ -25,6 +25,7 @@ export default class Dream extends React.Component {
   }
 
   render() {
+    // console.log(this.props.dream.creator._id)
     let showMenu;
     if(this.state.menu) {
       showMenu =
@@ -39,6 +40,8 @@ export default class Dream extends React.Component {
         </ul>
       </div>
     }
+
+    // if(userId != )
 
     return(
       <div className="dream_panel">
@@ -60,8 +63,9 @@ export default class Dream extends React.Component {
           <p className="story">{this.props.dream.content}</p>
         </div>
         <Panel
+          userLoggedIn={this.props.userLoggedIn}
           dispatch={this.props.dispatch}
-          userId={this.props.dream.creator._id}
+          dreamAuthor={this.props.dream.creator._id}
           dreamId={this.props.dream.id}
           title={this.props.dream.title}
           content={this.props.dream.content}

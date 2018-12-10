@@ -6,10 +6,9 @@ import DreamForm from './DreamForm/DreamForm';
 import {fetchProtectedData, fetchUser} from '../../actions/protected-data';
 import {fetchDream} from '../../actions/dream';
 import {fetchComment} from '../../actions/comment';
-import ScrollButton from './ScrollButton/ScrollButton'
+import ScrollButton from './ScrollButton/ScrollButton';
 import requiresLogin from '../RequiresLogin';
-import Toggle from '../Header/Toggle/Toggle';
-import Header from '../Header/Header.js'
+import Header from '../Header/Header.js';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -35,6 +34,7 @@ export class Dashboard extends React.Component {
   }
 
   render() {
+    // console.log(this.props.loggedIn)
     const dreamsArray = this.props.dreams;
     const filterMyDreams = dreamsArray.filter(dream => dream.creator._id === this.props.loggedIn)
     let showMyDreams = this.state.myDreams;
@@ -44,6 +44,7 @@ export class Dashboard extends React.Component {
       dreams = dreamsArray.map((dream, index) => (
         <li className="post_item" key={index}>
           <Dream
+            userLoggedIn={this.props.loggedIn}
             signedIn={this.props.username}
             index={index}
             dream={dream}
@@ -55,6 +56,7 @@ export class Dashboard extends React.Component {
       dreams = filterMyDreams.map((dream, index) => (
         <li className="post_item" key={index}>
           <Dream
+            userLoggedIn={this.props.loggedIn}
             signedIn={this.props.username}
             index={index}
             dream={dream}
