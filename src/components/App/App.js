@@ -11,10 +11,10 @@ library.add(faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComment
 
 export default class App extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <Router>
         <div className="row">
-          <Header title='Dream Catcher'/>
           <Route exact path="/" component={AppForm} />
           <Route exact path="/dashboard" component={Dashboard} />
         </div>

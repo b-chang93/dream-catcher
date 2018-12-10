@@ -2,6 +2,7 @@ import React from 'react';
 import './DreamForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {createDream} from '../../../actions/dream';
+import Toggle from '../../Header/Toggle/Toggle';
 
 export default class DreamForm extends React.Component {
   constructor(props) {
