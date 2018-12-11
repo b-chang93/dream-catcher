@@ -18,6 +18,7 @@ export class Dashboard extends React.Component {
       myDreams: false
     }
     this.toggleButton = this.toggleButton.bind(this);
+    this.renderDreams = this.renderDreams.bind(this);
   }
 
   toggleButton() {
@@ -33,15 +34,9 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchUser(this.props.username));
   }
 
-  render() {
-    // console.log(this.props.loggedIn)
-    const dreamsArray = this.props.dreams;
-    const filterMyDreams = dreamsArray.filter(dream => dream.creator._id === this.props.loggedIn)
-    let showMyDreams = this.state.myDreams;
-    let dreams;
-
+  renderDreams(showMyDreams, filterMyDreams) {
     if(!showMyDreams) {
-      dreams = dreamsArray.map((dream, index) => (
+      return this.props.dreams.map((dream, index) => (
         <li className="post_item" key={index}>
           <Dream
             userLoggedIn={this.props.loggedIn}
@@ -53,7 +48,7 @@ export class Dashboard extends React.Component {
         </li>
       ));
     } else {
-      dreams = filterMyDreams.map((dream, index) => (
+      return filterMyDreams.map((dream, index) => (
         <li className="post_item" key={index}>
           <Dream
             userLoggedIn={this.props.loggedIn}
@@ -65,13 +60,20 @@ export class Dashboard extends React.Component {
         </li>
       ));
     }
+  }
+
+  render() {
+    let dreamsArray = this.props.dreams;
+    let filterMyDreams = dreamsArray.filter(dream => dream.creator._id === this.props.loggedIn)
+    let showMyDreams = this.state.myDreams;
+    let dreams;
 
     return (
       <div className="Dashboard">
       <Header title='Dream Catcher' myDreams={this.state.myDreams} toggler={this.toggleButton}/>
         <div className="DreamContainer">
           <DreamForm dispatch={this.props.dispatch}/>
-          <ul className="dreams_post_list">{dreams}</ul>
+          <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams)}</ul>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
         </div>
       </div>

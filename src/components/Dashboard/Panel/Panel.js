@@ -3,14 +3,15 @@ import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {editDream} from '../../../actions/dream';
 import {createComment} from '../../../actions/comment';
+import {connect} from 'react-redux';
+import {fetchComment} from '../../../actions/comment';
 
-export default class Panel extends React.Component {
+export class Panel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
       commenting: false,
-      comments: false,
       title: this.props.title,
       content: this.props.content,
       text: ''
@@ -78,7 +79,15 @@ export default class Panel extends React.Component {
   }
 
   render() {
-    const commentsOnPost = this.props.comments.map((comment, index) => {
+    const numberComments = this.props.comments.filter(comment => comment.dream == this.props.dreamId).length;
+    const enableEditing = this.state.editing;
+    const enableComments = this.state.commenting;
+    let showCommentBox;
+    let showEditBox;
+
+    let filteredComments = this.props.comments
+      .filter(comment => comment.dream == this.props.dreamId)
+      .map((comment, index) => {
       return(
         <div className="all_comments" key={index}>
           <div className="user_comment" index={index}>
@@ -87,16 +96,10 @@ export default class Panel extends React.Component {
               className="user_avatar_in_comment"
               alt="user-avatar"
             />
-            <div className="comment_text">{comment.creator.firstName} {comment.creator.lastName} {comment.text}</div>
+            <div className="comment_text"><span>{comment.creator.firstName} {comment.creator.lastName}</span> {comment.text}</div>
           </div>
         </div>)
     });
-
-    const numberComments = this.props.comments.length;
-    const enableEditing = this.state.editing;
-    const enableComments = this.state.commenting;
-    let showCommentBox;
-    let showEditBox;
 
     if (enableComments) {
       showCommentBox =
@@ -111,13 +114,11 @@ export default class Panel extends React.Component {
           <button className="btn comment">Leave Comment</button>
         </form>
         <h2 className="comments_section">Comments</h2>
-        {commentsOnPost}
+        {filteredComments}
       </div>
     };
 
-    if (this.props.userLoggedIn !== this.props.dreamAuthor) {
-
-    } else if (enableEditing) {
+    if ((this.props.userLoggedIn === this.props.dreamAuthor) && enableEditing) {
       showEditBox =
       <div className="comment_container">
         <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleUpdateDream}>
@@ -134,7 +135,7 @@ export default class Panel extends React.Component {
           <button className="btn comment">Save</button>
         </form>
       </div>
-    };
+    }
 
     return(
       <div className="post_button_container">
@@ -159,3 +160,11 @@ export default class Panel extends React.Component {
     );
   };
 };
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    comments: state.comments
+  };
+};
+export default connect(mapStateToProps)(Panel);
