@@ -1,7 +1,6 @@
 function dreamReducer(state=[], action) {
   switch(action.type) {
     case 'ADD_DREAM':
-        console.log(action.dream)
       return [...state, {
         id: action.dream.id,
         title: action.dream.title,

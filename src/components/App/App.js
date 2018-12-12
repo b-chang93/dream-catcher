@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import AppForm from '../AppForm/AppForm.js'
-import Header from '../Header/Header.js'
+// import Header from '../Header/Header.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -14,7 +14,6 @@ export default class App extends React.Component {
     return (
       <Router>
         <div className="row">
-          <Header title='Dream Catcher'/>
           <Route exact path="/" component={AppForm} />
           <Route exact path="/dashboard" component={Dashboard} />
         </div>

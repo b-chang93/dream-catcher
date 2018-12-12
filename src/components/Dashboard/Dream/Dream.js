@@ -2,8 +2,9 @@ import React from 'react';
 import './Dream.css'
 import Panel from '../Panel/Panel'
 import {removeDream} from '../../../actions/dream';
+import { connect } from 'react-redux';
 
-export default class Dream extends React.Component {
+export class Dream extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +26,8 @@ export default class Dream extends React.Component {
   }
 
   render() {
+    let dreamAuthorId = this.props.dream.creator._id
+    let optionsMenu = <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
     let showMenu;
     if(this.state.menu) {
       showMenu =
@@ -53,20 +56,23 @@ export default class Dream extends React.Component {
               <span className="creator">
                 {this.props.dream.creator.firstName} {this.props.dream.creator.lastName}
               </span>
-              <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
+              {this.props.userLoggedIn === dreamAuthorId? optionsMenu: null}
               {showMenu}
             </div>
           </div>
           <p className="story">{this.props.dream.content}</p>
         </div>
         <Panel
-          dispatch={this.props.dispatch}
-          userId={this.props.dream.creator._id}
+          userLoggedIn={this.props.userLoggedIn}
+          dreamAuthor={this.props.dream.creator._id}
           dreamId={this.props.dream.id}
           title={this.props.dream.title}
           content={this.props.dream.content}
-          comments={this.props.comments}/>
+          comments={this.props.comments}
+        />
       </div>
     );
   }
 };
+
+export default connect()(Dream);

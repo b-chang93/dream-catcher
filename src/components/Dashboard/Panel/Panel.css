@@ -52,6 +52,10 @@
   height: 30px;
 }
 
+.comment_text > span {
+  color: blue;
+}
+
 @media only screen and (min-width: 700px) {
   .user_comment {
     padding: 25px;

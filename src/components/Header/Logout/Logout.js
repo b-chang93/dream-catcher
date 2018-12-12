@@ -20,8 +20,6 @@ export class LogOut extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
-    // console.log(this.state.loggedIn)
     let signOutButton;
     if(this.props.loggedIn) {
       signOutButton =

@@ -66,7 +66,6 @@ export const createDream = (title, content) => (dispatch, getState) => {
       return res.json();
     })
     .then(dream => {
-      console.log(dream)
       dispatch(addDream(dream));
     });
 }
