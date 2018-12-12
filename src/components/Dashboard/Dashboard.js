@@ -15,10 +15,25 @@ export class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      myDreams: false
+      myDreams: false,
+      menu: false,
+      private: false
     }
+
     this.toggleButton = this.toggleButton.bind(this);
     this.renderDreams = this.renderDreams.bind(this);
+  }
+
+  showMenu() {
+    this.setState({
+      menu: !this.state.menu
+    })
+  }
+
+  privateDream() {
+    this.setState({
+      private: !this.state.private
+    })
   }
 
   toggleButton() {
@@ -34,20 +49,8 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchUser(this.props.username));
   }
 
-  renderDreams(showMyDreams, filterMyDreams) {
-    if(!showMyDreams) {
-      return this.props.dreams.map((dream, index) => (
-        <li className="post_item" key={index}>
-          <Dream
-            userLoggedIn={this.props.loggedIn}
-            signedIn={this.props.username}
-            index={index}
-            dream={dream}
-            comments={this.props.comments.filter(comment => comment.dream === dream.id)}
-          />
-        </li>
-      ));
-    } else {
+  renderDreams(showMyDreams, filterMyDreams, filterPrivated) {
+    if(showMyDreams) {
       return filterMyDreams.map((dream, index) => (
         <li className="post_item" key={index}>
           <Dream
@@ -55,7 +58,17 @@ export class Dashboard extends React.Component {
             signedIn={this.props.username}
             index={index}
             dream={dream}
-            comments={this.props.comments.filter(comment => comment.dream === dream.id)}
+          />
+        </li>
+      ));
+    } else {
+      return filterPrivated.map((dream, index) => (
+        <li className="post_item" key={index}>
+          <Dream
+            userLoggedIn={this.props.loggedIn}
+            signedIn={this.props.username}
+            index={index}
+            dream={dream}
           />
         </li>
       ));
@@ -63,8 +76,12 @@ export class Dashboard extends React.Component {
   }
 
   render() {
+
     let dreamsArray = this.props.dreams;
-    let filterMyDreams = dreamsArray.filter(dream => dream.creator._id === this.props.loggedIn)
+    let filterPrivated = dreamsArray.filter(
+      dream => dream.private === false || dream.creator._id === this.props.loggedIn);
+    let filterMyDreams = dreamsArray.filter(
+      dream => dream.creator._id === this.props.loggedIn);
     let showMyDreams = this.state.myDreams;
 
     return (
@@ -72,7 +89,7 @@ export class Dashboard extends React.Component {
       <Header title='Dream Catcher' myDreams={this.state.myDreams} toggler={this.toggleButton}/>
         <div className="DreamContainer">
           <DreamForm/>
-          <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams)}</ul>
+          <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams, filterPrivated)}</ul>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
         </div>
       </div>

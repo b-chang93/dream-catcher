@@ -96,6 +96,31 @@ export const editDream = (title, content, id) => (dispatch, getState) => {
     });
 }
 
+export const privateDream = (isPrivate, id) => (dispatch, getState) => {
+  const data = {
+    private: isPrivate
+  }
+
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/dreams/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(data)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(dream => {
+      dispatch(updateDream(dream));
+    });
+}
+
 export const removeDream = (id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/dreams/${id}`, {

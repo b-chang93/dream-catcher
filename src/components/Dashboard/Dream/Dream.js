@@ -2,6 +2,7 @@ import React from 'react';
 import './Dream.css'
 import Panel from '../Panel/Panel'
 import {removeDream} from '../../../actions/dream';
+import {privateDream} from '../../../actions/dream';
 import { connect } from 'react-redux';
 
 export class Dream extends React.Component {
@@ -9,10 +10,12 @@ export class Dream extends React.Component {
     super(props);
 
     this.state = {
-      menu: false
+      menu: false,
+      private: this.props.dream.private
     }
     this.showMenu = this.showMenu.bind(this);
     this.handleDeleteDream = this.handleDeleteDream.bind(this);
+    this.privateDream = this.privateDream.bind(this);
   }
 
   showMenu() {
@@ -25,7 +28,23 @@ export class Dream extends React.Component {
     this.props.dispatch(removeDream(id));
   }
 
+  privateDream(id) {
+    this.setState({
+      private: !this.state.private
+    }, () =>
+    this.props.dispatch(privateDream(this.state.private, id))
+    )
+  }
+
   render() {
+    let privateDream;
+
+    if(this.props.dream.private) {
+      privateDream = 'Unprivate'
+    } else {
+      privateDream = 'Private'
+    }
+
     let dreamAuthorId = this.props.dream.creator._id
     let optionsMenu = <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
     let showMenu;
@@ -37,7 +56,7 @@ export class Dream extends React.Component {
             <button className="menu_btn delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</button>
           </li>
           <li>
-            <button className="menu_btn private">Private</button>
+            <button className="menu_btn private" onClick={() => this.privateDream(this.props.dream.id)}>{privateDream}</button>
           </li>
         </ul>
       </div>
