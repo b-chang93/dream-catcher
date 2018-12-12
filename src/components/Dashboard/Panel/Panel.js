@@ -162,7 +162,6 @@ export class Panel extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     comments: state.comments
   };

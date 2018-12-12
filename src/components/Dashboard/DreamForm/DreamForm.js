@@ -2,9 +2,9 @@ import React from 'react';
 import './DreamForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {createDream} from '../../../actions/dream';
-// import Toggle from '../../Header/Toggle/Toggle';
+import { connect } from 'react-redux';
 
-export default class DreamForm extends React.Component {
+export class DreamForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,3 +77,5 @@ export default class DreamForm extends React.Component {
     );
   };
 };
+
+export default connect()(DreamForm);

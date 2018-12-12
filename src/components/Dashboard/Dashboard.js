@@ -44,7 +44,7 @@ export class Dashboard extends React.Component {
             index={index}
             dream={dream}
             comments={this.props.comments.filter(comment => comment.dream === dream.id)}
-            dispatch={this.props.dispatch}/>
+          />
         </li>
       ));
     } else {
@@ -56,13 +56,14 @@ export class Dashboard extends React.Component {
             index={index}
             dream={dream}
             comments={this.props.comments.filter(comment => comment.dream === dream.id)}
-            dispatch={this.props.dispatch}/>
+          />
         </li>
       ));
     }
   }
 
   render() {
+    console.log(this.props)
     let dreamsArray = this.props.dreams;
     let filterMyDreams = dreamsArray.filter(dream => dream.creator._id === this.props.loggedIn)
     let showMyDreams = this.state.myDreams;
@@ -72,7 +73,7 @@ export class Dashboard extends React.Component {
       <div className="Dashboard">
       <Header title='Dream Catcher' myDreams={this.state.myDreams} toggler={this.toggleButton}/>
         <div className="DreamContainer">
-          <DreamForm dispatch={this.props.dispatch}/>
+          <DreamForm/>
           <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams)}</ul>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
         </div>
