@@ -26,7 +26,6 @@ export class Dream extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let dreamAuthorId = this.props.dream.creator._id
     let optionsMenu = <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
     let showMenu;

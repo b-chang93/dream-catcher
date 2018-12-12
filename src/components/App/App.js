@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import AppForm from '../AppForm/AppForm.js'
-import Header from '../Header/Header.js'
+// import Header from '../Header/Header.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -11,7 +11,6 @@ library.add(faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComment
 
 export default class App extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <Router>
         <div className="row">

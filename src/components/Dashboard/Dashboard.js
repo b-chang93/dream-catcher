@@ -63,11 +63,9 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let dreamsArray = this.props.dreams;
     let filterMyDreams = dreamsArray.filter(dream => dream.creator._id === this.props.loggedIn)
     let showMyDreams = this.state.myDreams;
-    let dreams;
 
     return (
       <div className="Dashboard">

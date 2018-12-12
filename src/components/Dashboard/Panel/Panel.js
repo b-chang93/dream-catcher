@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {editDream} from '../../../actions/dream';
 import {createComment} from '../../../actions/comment';
 import {connect} from 'react-redux';
-import {fetchComment} from '../../../actions/comment';
 
 export class Panel extends React.Component {
   constructor(props) {
@@ -79,14 +78,14 @@ export class Panel extends React.Component {
   }
 
   render() {
-    const numberComments = this.props.comments.filter(comment => comment.dream == this.props.dreamId).length;
+    const numberComments = this.props.comments.filter(comment => comment.dream === this.props.dreamId).length;
     const enableEditing = this.state.editing;
     const enableComments = this.state.commenting;
     let showCommentBox;
     let showEditBox;
 
     let filteredComments = this.props.comments
-      .filter(comment => comment.dream == this.props.dreamId)
+      .filter(comment => comment.dream === this.props.dreamId)
       .map((comment, index) => {
       return(
         <div className="all_comments" key={index}>
