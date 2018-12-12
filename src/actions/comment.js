@@ -6,6 +6,18 @@ export const addComment = (comment) => ({
   comment
 });
 
+export const UPDATE_COMMENT= 'UPDATE_COMMENT';
+export const updateComment = (comment) => ({
+  type: UPDATE_COMMENT,
+  comment
+});
+
+export const DELETE_COMMENT= 'DELETE_COMMENT';
+export const deleteComment = (comment) => ({
+  type: DELETE_COMMENT,
+  comment
+});
+
 export const FETCH_COMMENT_SUCCESS = 'FETCH_COMMENT_SUCCESS';
 export const fetchCommentSuccess = comments => ({
   type: FETCH_COMMENT_SUCCESS,
