@@ -68,6 +68,7 @@ export class Panel extends React.Component {
     const title = event.target.title.value;
     const content = event.target.content.value;
     this.props.dispatch(editDream(title, content, id));
+    this.setEditing();
   }
 
   handleCreateComment(event) {
@@ -88,16 +89,16 @@ export class Panel extends React.Component {
       .filter(comment => comment.dream === this.props.dreamId)
       .map((comment, index) => {
       return(
-        <div className="all_comments" key={index}>
-          <div className="user_comment" index={index}>
-            <img
-              src={comment.creator.avatar}
-              className="user_avatar_in_comment"
-              alt="user-avatar"
-            />
-            <div className="comment_text"><span>{comment.creator.firstName} {comment.creator.lastName}</span> {comment.text}</div>
+        <li className="all_comments" key={index}>
+        <img
+          src={comment.creator.avatar}
+          className="user_avatar_in_comment"
+          alt="user-avatar"
+        />
+          <div className="comment_text">
+            <p><span class="commentor">{comment.creator.firstName} {comment.creator.lastName} </span>{comment.text}</p>
           </div>
-        </div>)
+        </li>)
     });
 
     if (enableComments) {
@@ -112,15 +113,17 @@ export class Panel extends React.Component {
             onChange={e => this.createComment(e.target.value)}></textarea>
           <button className="btn comment">Leave Comment</button>
         </form>
-        <h2 className="comments_section">Comments</h2>
-        {filteredComments}
+        <h2 className="comments_header">Comments</h2>
+        <ul className="comments_section">
+          {filteredComments}
+        </ul>
       </div>
     };
 
     if ((this.props.userLoggedIn === this.props.dreamAuthor) && enableEditing) {
       showEditBox =
       <div className="comment_container">
-        <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleUpdateDream}>
+        <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleUpdateDream} >
           <input
             className="dream_title_field"
             name="title"
