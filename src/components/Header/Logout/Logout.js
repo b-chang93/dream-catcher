@@ -24,7 +24,7 @@ export class LogOut extends React.Component {
     if(this.props.loggedIn) {
       signOutButton =
         <button onClick={() => this.logOut()} className="sign_out">
-          <span className="sign_out_icon"><FontAwesomeIcon icon="sign-out-alt" /></span>
+          <span className="sign_out_icon"><FontAwesomeIcon icon="power-off" /></span>
         </button>
     }
 

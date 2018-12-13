@@ -13,7 +13,6 @@ function dreamReducer(state=[], action) {
       let updatedDream = state.map((dream, index) => {
         return dream.id === action.dream.id ? action.dream : dream;
       });
-
       return [...updatedDream];
     case 'DELETE_DREAM':
       let filterDreams = state.filter(dream => dream.id !== action.id);

@@ -14,64 +14,95 @@
 .all_comments {
   list-style: none;
   padding: 0;
+  width: 95%;
+  display: flex;
+  margin: 10px 0 20px;
 }
 
 .comments_section {
+  padding-left: 15px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.comments_header {
   text-align: center;
 }
 
 .user_comment {
   position: relative;
   padding: 10px;
-  font-size: 20px;
+  font-size: 18px;
   width: 90%;
   margin: 0 auto;
+  top: 10px;
+  padding: 10px 10px;
+  font-size: 12px;
 }
 
 .dream_updateable_fields {
   width: 93%;
-  padding-left: 15px;
+  padding-left: 25px;
 }
 
 .user_avatar_in_comment {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
   margin-right: 20px;
 }
 
 .comment_text {
   display: inline;
-  line-height: 10px;
-  position: absolute;
-  top: 10px;
-  padding: 10px 10px;
   box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
-  font-size: 12px;
-  /* width: 60%; */
-  height: 30px;
+  padding: 15px 15px;
 }
 
-.comment_text > span {
+.commentor {
   color: blue;
 }
 
+.post_edit_btn, .post_comment_btn {
+  font-size: 12px;
+}
+
+.comment_text > p {
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 700px){
+  .comment_text {
+    max-height: 100px;
+    overflow:auto;
+  }
+}
+
 @media only screen and (min-width: 700px) {
+  .user_avatar_in_comment {
+    width: 50px;
+    height: 50px;
+  }
+
   .user_comment {
     padding: 25px;
   }
 
   .dream_updateable_fields {
     width: 95%;
-    padding-left: 25px;
+    padding-left: 20px;
   }
 
   .comment_text {
-    top: 25px;
-    padding: 20px 25px;
-    box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
+    height: auto;
     font-size: 18px;
-    /* width: 80%; */
-    height: 15px;
+    padding: 15px 15px;
+  }
+
+  .comment_text > p {
+    display: inline;
+  }
+
+  .post_edit_btn, .post_comment_btn {
+    font-size: 20px;
   }
 }

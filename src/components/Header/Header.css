@@ -11,7 +11,8 @@
 .jumbotron_title {
   text-decoration: none;
   color: #003366;
-  line-height: 50px;
+  line-height: 35px;
+  font-size: 24px;
 }
 
 .sign_out {
@@ -34,4 +35,22 @@
 
 .sign_out:hover .sign_out_icon {
   color: #003366;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+  .sign_out {
+    position: relative;
+    top: -70px;
+  }
+
+  .jumbotron_title {
+    font-size: 34px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .jumbotron_title {
+    line-height: 50px;
+    font-size: 46px;
+  }
 }

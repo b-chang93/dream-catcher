@@ -65,7 +65,7 @@
   width: 95%;
   font: normal 14px verdana;
   line-height: 25px;
-  padding: 2px 0px;
+  padding: 2px 4px;
   padding-left: 15px;
   border: solid 1px #ddd;
 }
@@ -83,7 +83,7 @@
 .menu_btn {
   background:none!important;
   color:inherit;
-  border:none;
+  border: none;
   font: inherit;
   cursor: pointer;
 }
@@ -106,10 +106,10 @@ textarea {
 
 .menu {
   position: relative;
-  top: 20px;
-  left: 0px;
+  top: 30px;
+  left: -5px;
   border: 1px solid black;
-  width: 120px;
+  width: 100px;
   height: 60px;
   background-color: white;
 }
@@ -131,6 +131,15 @@ ul.options {
 
 .options > li:hover {
   background: #ADD8E6;
+}
+
+.dropdown-menu {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
 
 @media only screen and (min-width: 700px) {
