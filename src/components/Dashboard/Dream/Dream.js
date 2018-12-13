@@ -4,6 +4,7 @@ import Panel from '../Panel/Panel'
 import {removeDream} from '../../../actions/dream';
 import {privateDream} from '../../../actions/dream';
 import { connect } from 'react-redux';
+import { ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 
 export class Dream extends React.Component {
   constructor(props) {
@@ -50,8 +51,7 @@ export class Dream extends React.Component {
     let showMenu;
     if(this.state.menu) {
       showMenu =
-      <div className="menu">
-        <ul className="options">
+        <ul className="menu options dropdown-menu">
           <li>
             <button className="menu_btn delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</button>
           </li>
@@ -59,7 +59,6 @@ export class Dream extends React.Component {
             <button className="menu_btn private" onClick={() => this.privateDream(this.props.dream.id)}>{privateDream}</button>
           </li>
         </ul>
-      </div>
     }
 
     return(
