@@ -7,12 +7,12 @@
   border-bottom: 1px solid #A9A9A9;
 }
 
-.btn-group {
+.button-group {
   width: 95%;
   margin: 10px auto;
 }
 
-.btn {
+.button {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -97,7 +97,7 @@ h3 {
     width: 50%;
   }
 
-  .btn {
+  .button {
     font-size: 18px;
   }
 }

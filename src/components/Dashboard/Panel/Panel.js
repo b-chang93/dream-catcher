@@ -111,7 +111,7 @@ export class Panel extends React.Component {
             placeholder="Leave a comment about the dream!"
             value={this.state.text}
             onChange={e => this.createComment(e.target.value)}></textarea>
-          <button className="btn comment">Leave Comment</button>
+          <button className="button comment">Leave Comment</button>
         </form>
         <h2 className="comments_header">Comments</h2>
         <ul className="comments_section">
@@ -134,7 +134,7 @@ export class Panel extends React.Component {
             name="content"
             value={this.state.content}
             onChange={e => this.updateDreamContent(e.target.value)}></textarea>
-          <button className="btn comment">Save</button>
+          <button className="button comment">Save</button>
         </form>
       </div>
     }
@@ -144,7 +144,7 @@ export class Panel extends React.Component {
         <button
           style={{ display: this.props.userLoggedIn !== this.props.dreamAuthor? 'none': 'inline'}}
           onClick={() => this.setEditing()}
-          className="btn post_edit_btn">
+          className="button post_edit_button">
           {!enableEditing ?
             <span className="post-icons"><FontAwesomeIcon icon="edit"/>Edit</span>:
             <span className="post-icons"><FontAwesomeIcon icon="times-circle"/>Close</span>}
@@ -152,7 +152,7 @@ export class Panel extends React.Component {
         <button
           style={{ width: this.props.userLoggedIn !== this.props.dreamAuthor? '100%': '50%'}}
           onClick={() => this.setCommenting()}
-          className="btn post_comment_btn">{!enableComments ?
+          className="button post_comment_button">{!enableComments ?
             <span className="post-icons"><FontAwesomeIcon icon="comments"/>Comment ({numberComments})</span>:
             <span className="post-icons"><FontAwesomeIcon icon="times-circle"/>Close</span>}
         </button>

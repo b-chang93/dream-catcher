@@ -4,7 +4,7 @@ import Panel from '../Panel/Panel'
 import {removeDream} from '../../../actions/dream';
 import {privateDream} from '../../../actions/dream';
 import { connect } from 'react-redux';
-import { ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
+import AlertMessage from '../../AlertMessage/AlertMessage';
 
 export class Dream extends React.Component {
   constructor(props) {
@@ -12,11 +12,19 @@ export class Dream extends React.Component {
 
     this.state = {
       menu: false,
-      private: this.props.dream.private
+      private: this.props.dream.private,
+      show: false
     }
     this.showMenu = this.showMenu.bind(this);
     this.handleDeleteDream = this.handleDeleteDream.bind(this);
     this.privateDream = this.privateDream.bind(this);
+    this.showModal = this.showModal.bind(this);
+  }
+
+  showModal() {
+    this.setState({
+      show: !this.state.show
+    })
   }
 
   showMenu() {
@@ -35,6 +43,7 @@ export class Dream extends React.Component {
     }, () =>
     this.props.dispatch(privateDream(this.state.private, id))
     )
+    this.showModal()
   }
 
   render() {
@@ -47,16 +56,16 @@ export class Dream extends React.Component {
     }
 
     let dreamAuthorId = this.props.dream.creator._id
-    let optionsMenu = <button className="menu_btn menu_options" onClick={this.showMenu}>...</button>
+    let optionsMenu = <button className="menu_button menu_options" onClick={this.showMenu}>...</button>
     let showMenu;
     if(this.state.menu) {
       showMenu =
         <ul className="menu options dropdown-menu">
           <li>
-            <button className="menu_btn delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</button>
+            <button className="menu_button delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</button>
           </li>
           <li>
-            <button className="menu_btn private" onClick={() => this.privateDream(this.props.dream.id)}>{privateDream}</button>
+            <button className="menu_button private" onClick={() => this.privateDream(this.props.dream.id)}>{privateDream}</button>
           </li>
         </ul>
     }

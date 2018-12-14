@@ -2,10 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import SignUpForm from './SignUpForm/SignUpForm';
+// import AlertMessage from '../../../AlertMessage/AlertMessage';
 
 function SignUp(props) {
     if (props.loggedIn) {
-      return <Redirect to="/dashboard" />;
+      // return <Redirect to="/dashboard" />;
     }
     return (
       <div className="home">

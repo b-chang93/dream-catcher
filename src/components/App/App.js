@@ -8,7 +8,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faPowerOff, faKey } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faPowerOff, faKey)
-
 export default class App extends React.Component {
   render() {
     return (

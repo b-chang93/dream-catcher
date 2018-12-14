@@ -3,29 +3,45 @@ import {Field, reduxForm, focus} from 'redux-form';
 import Input from '../../../Input';
 import {login} from '../../../../actions/auth';
 import {required, nonEmpty} from '../../../../validators';
+import AlertMessage from '../../../AlertMessage/AlertMessage';
 import './LoginForm.css'
 
 export class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showAlert: false
+    };
+
+    this.closeAlert = this.closeAlert.bind(this);
+  }
+
   onSubmit(values) {
+    this.setState({
+      showAlert: true
+    });
     return this.props.dispatch(login(values.username, values.password));
   }
+
+  closeAlert() { this.setState({ showAlert: false }); }
 
   render() {
     let error;
     if (this.props.error) {
       error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}
-        </div>
+        <AlertMessage class="alert" showModal={this.state.showAlert} closeAlert={this.closeAlert} error={this.props.error}/>
       );
     }
+    console.log(this.state.showModal)
     return (
+      <div>
+      {error}
       <form
         className="LoginForm"
         onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values)
         )}>
-        {error}
         <label htmlFor="username">Username</label>
         <Field
           component={Input}
@@ -52,6 +68,7 @@ export class LoginForm extends React.Component {
           Log in
         </button>
       </form>
+      </div>
     );
   }
 }
