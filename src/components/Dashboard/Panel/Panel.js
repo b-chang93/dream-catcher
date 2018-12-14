@@ -96,7 +96,7 @@ export class Panel extends React.Component {
           alt="user-avatar"
         />
           <div className="comment_text">
-            <p><span class="commentor">{comment.creator.firstName} {comment.creator.lastName} </span>{comment.text}</p>
+            <p><span className="commentor">{comment.creator.firstName} {comment.creator.lastName} </span>{comment.text}</p>
           </div>
         </li>)
     });
@@ -113,7 +113,7 @@ export class Panel extends React.Component {
             onChange={e => this.createComment(e.target.value)}></textarea>
           <button className="button comment">Leave Comment</button>
         </form>
-        <h2 className="comments_header">Comments</h2>
+        <h2 className="comments_header"><FontAwesomeIcon icon="comments"/> Comments</h2>
         <ul className="comments_section">
           {filteredComments}
         </ul>
