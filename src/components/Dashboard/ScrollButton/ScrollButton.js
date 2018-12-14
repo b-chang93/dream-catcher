@@ -26,7 +26,7 @@ export default class ScrollButton extends React.Component {
   render () {
     return <button title="Back to top" className="scroll"
        onClick={ () => { this.scrollToTop(); }}>
-        <span className="arrow-up glyphicon glyphicon-chevron-up"><FontAwesomeIcon icon="angle-double-up" /></span>
+        <span className="arrow-up"><FontAwesomeIcon icon="angle-double-up" /></span>
       </button>;
    }
 }
