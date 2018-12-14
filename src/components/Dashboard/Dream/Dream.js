@@ -4,7 +4,6 @@ import Panel from '../Panel/Panel'
 import {removeDream} from '../../../actions/dream';
 import {privateDream} from '../../../actions/dream';
 import { connect } from 'react-redux';
-import AlertMessage from '../../AlertMessage/AlertMessage';
 
 export class Dream extends React.Component {
   constructor(props) {
