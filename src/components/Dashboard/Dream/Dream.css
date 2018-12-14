@@ -62,7 +62,7 @@
 .dream_title_field, .create_dream_content {
   background: url('../../../assets/notebook.png') repeat-y;
   background-size: 100% 30px;
-  width: 95%;
+  width: 100%;
   font: normal 14px verdana;
   line-height: 25px;
   padding: 2px 4px;
@@ -149,7 +149,7 @@ ul.options {
   }
 
   .dream_title_field, .create_dream_content {
-    width: 97%;
+    width: 100%;
     padding-left: 20px;
   }
 
