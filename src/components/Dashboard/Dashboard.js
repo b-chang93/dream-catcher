@@ -8,7 +8,8 @@ import {fetchDream} from '../../actions/dream';
 import {fetchComment} from '../../actions/comment';
 import ScrollButton from './ScrollButton/ScrollButton';
 import requiresLogin from '../RequiresLogin';
-import Header from '../Header/Header.js';
+import Header from '../Header/Header';
+import DashboardModal from '../DashboardModal';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -17,12 +18,29 @@ export class Dashboard extends React.Component {
     this.state = {
       myDreams: false,
       menu: false,
-      private: false
+      private: false,
+      showModal: false
     }
 
     this.toggleButton = this.toggleButton.bind(this);
     this.renderDreams = this.renderDreams.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.closeAlert = this.closeAlert.bind(this);
   }
+
+  showModal() {
+    this.setState({
+      showModal: false
+    })
+  }
+
+  showModal() {
+    this.setState({
+      showModal: true
+    })
+  }
+
+  closeAlert() { this.setState({ showModal: false }); }
 
   showMenu() {
     this.setState({
@@ -47,6 +65,7 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchComment());
     this.props.dispatch(fetchProtectedData());
     this.props.dispatch(fetchUser(this.props.username));
+    this.showModal();
   }
 
   renderDreams(showMyDreams, filterMyDreams, filterPrivated) {
@@ -83,9 +102,14 @@ export class Dashboard extends React.Component {
     let filterMyDreams = dreamsArray.filter(
       dream => dream.creator._id === this.props.loggedIn);
     let showMyDreams = this.state.myDreams;
+    let welcomeModal;
+    if(this.props.loggedIn) {
+      // console.log('hello world')
+    }
 
     return (
       <div className="Dashboard">
+      <DashboardModal showModal={this.state.showModal} closeAlert={this.closeAlert} />
       <Header title='Dream Catcher' myDreams={this.state.myDreams} toggler={this.toggleButton}/>
         <div className="DreamContainer">
           <DreamForm/>
