@@ -28,46 +28,46 @@ export class LoginForm extends React.Component {
 
   render() {
     let error;
+    console.log(this.props)
     if (this.props.error) {
       error = (
         <AlertMessage class="alert" showModal={this.state.showAlert} closeAlert={this.closeAlert} error={this.props.error}/>
       );
     }
-    console.log(this.state.showModal)
     return (
-      <div>
-      {error}
-      <form
-        className="LoginForm"
-        onSubmit={this.props.handleSubmit(values =>
-            this.onSubmit(values)
-        )}>
-        <label htmlFor="username">Username</label>
-        <Field
-          component={Input}
-          type="text"
-          name="username"
-          id="username"
-          validate={[required, nonEmpty]}
-          placeholder="username"
-          className="username"
-          required
-        />
-        <label htmlFor="password">Password</label>
-        <Field
-          component={Input}
-          type="password"
-          name="password"
-          id="password"
-          validate={[required, nonEmpty]}
-          placeholder="password"
-          className="user-password"
-          required
-        />
-        <button className="login-button" disabled={this.props.pristine || this.props.submitting}>
-          Log in
-        </button>
-      </form>
+      <div className="login_container">
+        {error}
+        <form
+          className="LoginForm"
+          onSubmit={this.props.handleSubmit(values =>
+              this.onSubmit(values)
+          )}>
+          <label htmlFor="username">Username</label>
+          <Field
+            component={Input}
+            type="text"
+            name="username"
+            id="username"
+            validate={[required, nonEmpty]}
+            placeholder="username"
+            className="username"
+            required
+          />
+          <label htmlFor="password">Password</label>
+          <Field
+            component={Input}
+            type="password"
+            name="password"
+            id="password"
+            validate={[required, nonEmpty]}
+            placeholder="password"
+            className="user-password"
+            required
+          />
+          <button className="login-button" disabled={this.props.pristine || this.props.submitting}>
+            Log in
+          </button>
+        </form>
       </div>
     );
   }
