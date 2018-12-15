@@ -28,10 +28,9 @@ export class LoginForm extends React.Component {
 
   render() {
     let error;
-    console.log(this.props)
     if (this.props.error) {
       error = (
-        <AlertMessage class="alert" showModal={this.state.showAlert} closeAlert={this.closeAlert} error={this.props.error}/>
+        <AlertMessage class="alert" showModal={this.state.showAlert} closeAlert={this.closeAlert} error={this.props.error} type="login"/>
       );
     }
     return (

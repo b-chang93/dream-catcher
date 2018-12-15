@@ -103,10 +103,7 @@ export class Dashboard extends React.Component {
       dream => dream.creator._id === this.props.loggedIn);
     let showMyDreams = this.state.myDreams;
     let welcomeModal;
-    if(this.props.loggedIn) {
-      // console.log('hello world')
-    }
-
+    
     return (
       <div className="Dashboard">
       <DashboardModal showModal={this.state.showModal} closeAlert={this.closeAlert} />

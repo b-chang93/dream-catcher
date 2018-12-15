@@ -4,7 +4,6 @@ import {Redirect} from 'react-router-dom';
 import LoginForm from './LoginForm/LoginForm';
 
 export function Login(props) {
-    console.log(props)
     if (props.loggedIn) {
         console.log('redirecting...')
         return  (
