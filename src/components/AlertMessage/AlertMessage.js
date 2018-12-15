@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-bootstrap';
 import Login from '../HomePage/Login/Login'
+import SignUpForm from '../HomePage/SignUp/SignUpForm/SignUpForm'
 
 export default class AlertMessage extends React.Component {
   constructor(props, context) {
@@ -23,7 +24,6 @@ export default class AlertMessage extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     if (this.state.show) {
       return (
         <Alert bsStyle="danger" onDismiss={this.handleDismiss}>
@@ -32,6 +32,10 @@ export default class AlertMessage extends React.Component {
       );
     }
 
-    return <Login/>;
+    if(this.props.type === "login") {
+      return <Login/>;
+    } else {
+      return <SignUpForm/>;
+    }
   }
 }
