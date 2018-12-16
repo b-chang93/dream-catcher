@@ -8,20 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class HomePage extends React.Component {
 
-  toggleLogin() {
-    this.setState({
-      showLoginForm: !this.state.showLoginForm,
-      showSignUpForm: false
-    });
-  }
-
-  toggleSignUp() {
-    this.setState({
-      showSignUpForm: !this.state.showSignUpForm,
-      showLoginForm: false
-    });
-  }
-
   demoMode() {
     this.setState({
       showDemo: true
@@ -31,11 +17,16 @@ export class HomePage extends React.Component {
   }
 
   render() {
+    // <Route exact path="/dashboard" component={Dashboard} />
+    // <Route exact path="/dashboard" render={(props) => (<Dashboard test="hi"/>)} />
     return(
       <Router>
         <button className="demo button" onClick={() => this.demoMode()}>
           <span className="homepage-icons"><FontAwesomeIcon icon="bed"/></span>Demo Dreams
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route
+            exact path="/dashboard"
+            render={() => <Dashboard test={true} />}
+            test="hello" />
         </button>
       </Router>
     );

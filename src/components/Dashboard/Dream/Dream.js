@@ -89,6 +89,7 @@ export class Dream extends React.Component {
           <p className="story">{this.props.dream.content}</p>
         </div>
         <Panel
+          username={this.props.signedIn}
           userLoggedIn={this.props.userLoggedIn}
           dreamAuthor={this.props.dream.creator._id}
           dreamId={this.props.dream.id}
