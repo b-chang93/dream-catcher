@@ -6,7 +6,7 @@ export default class AppForm extends React.Component {
   render() {
     return (
       <div className="AppForm">
-        <HomePage />
+        <HomePage {...this.props} />
       </div>
     );
   }

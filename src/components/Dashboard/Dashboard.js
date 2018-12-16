@@ -27,13 +27,7 @@ export class Dashboard extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.closeAlert = this.closeAlert.bind(this);
   }
-
-  showModal() {
-    this.setState({
-      showModal: false
-    })
-  }
-
+  
   showModal() {
     this.setState({
       showModal: true
@@ -102,8 +96,7 @@ export class Dashboard extends React.Component {
     let filterMyDreams = dreamsArray.filter(
       dream => dream.creator._id === this.props.loggedIn);
     let showMyDreams = this.state.myDreams;
-    let welcomeModal;
-    
+
     return (
       <div className="Dashboard">
       <DashboardModal showModal={this.state.showModal} closeAlert={this.closeAlert} />
