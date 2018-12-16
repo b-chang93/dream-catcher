@@ -107,7 +107,7 @@ export class Dashboard extends React.Component {
         <div className="DreamContainer">
           <DreamForm username={this.props.username}/>
           <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams, filterPrivated)}</ul>
-          <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
+          <ScrollButton/>
         </div>
       </div>
     );
