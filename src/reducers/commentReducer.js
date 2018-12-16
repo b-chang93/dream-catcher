@@ -18,7 +18,7 @@ function commentReducer(state = [], action) {
         return [...filterComments]
     case 'FETCH_COMMENT_SUCCESS':
       return [
-        ...state, ...action.comments
+        ...action.comments
       ]
     default:
       return state;
