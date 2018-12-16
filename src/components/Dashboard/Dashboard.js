@@ -28,6 +28,14 @@ export class Dashboard extends React.Component {
     this.closeAlert = this.closeAlert.bind(this);
   }
 
+  componentDidMount() {
+    this.props.dispatch(fetchDream());
+    this.props.dispatch(fetchComment());
+    this.props.dispatch(fetchProtectedData());
+    this.props.dispatch(fetchUser(this.props.username));
+    this.showModal();
+  }
+
   showModal() {
     this.setState({
       showModal: true
@@ -52,14 +60,6 @@ export class Dashboard extends React.Component {
     this.setState({
       myDreams: !this.state.myDreams
     })
-  }
-
-  componentDidMount() {
-    this.props.dispatch(fetchDream());
-    this.props.dispatch(fetchComment());
-    this.props.dispatch(fetchProtectedData());
-    this.props.dispatch(fetchUser(this.props.username));
-    this.showModal();
   }
 
   renderDreams(showMyDreams, filterMyDreams, filterPrivated) {
@@ -98,6 +98,7 @@ export class Dashboard extends React.Component {
       dream => dream.creator._id === this.props.loggedIn);
 
     let showMyDreams = this.state.myDreams;
+    
     return (
       <div className="Dashboard">
       <DashboardModal showModal={this.state.showModal} closeAlert={this.closeAlert} />

@@ -17,8 +17,6 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    // <Route exact path="/dashboard" component={Dashboard} />
-    // <Route exact path="/dashboard" render={(props) => (<Dashboard test="hi"/>)} />
     return(
       <Router>
         <button className="demo button" onClick={() => this.demoMode()}>
