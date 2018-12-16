@@ -28,10 +28,12 @@ export class Dashboard extends React.Component {
     this.closeAlert = this.closeAlert.bind(this);
   }
 
-  showModal() {
-    this.setState({
-      showModal: false
-    })
+  componentDidMount() {
+    this.props.dispatch(fetchDream());
+    this.props.dispatch(fetchComment());
+    this.props.dispatch(fetchProtectedData());
+    this.props.dispatch(fetchUser(this.props.username));
+    this.showModal();
   }
 
   showModal() {
@@ -58,14 +60,6 @@ export class Dashboard extends React.Component {
     this.setState({
       myDreams: !this.state.myDreams
     })
-  }
-
-  componentDidMount() {
-    this.props.dispatch(fetchDream());
-    this.props.dispatch(fetchComment());
-    this.props.dispatch(fetchProtectedData());
-    this.props.dispatch(fetchUser(this.props.username));
-    this.showModal();
   }
 
   renderDreams(showMyDreams, filterMyDreams, filterPrivated) {
@@ -95,21 +89,22 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-
     let dreamsArray = this.props.dreams;
+
     let filterPrivated = dreamsArray.filter(
       dream => dream.private === false || dream.creator._id === this.props.loggedIn);
+
     let filterMyDreams = dreamsArray.filter(
       dream => dream.creator._id === this.props.loggedIn);
+
     let showMyDreams = this.state.myDreams;
-    let welcomeModal;
     
     return (
       <div className="Dashboard">
       <DashboardModal showModal={this.state.showModal} closeAlert={this.closeAlert} />
       <Header title='Dream Catcher' myDreams={this.state.myDreams} toggler={this.toggleButton}/>
         <div className="DreamContainer">
-          <DreamForm/>
+          <DreamForm username={this.props.username}/>
           <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams, filterPrivated)}</ul>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
         </div>

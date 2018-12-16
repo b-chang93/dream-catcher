@@ -3,7 +3,7 @@ import './App.css';
 import AppForm from '../AppForm/AppForm.js'
 // import Header from '../Header/Header.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Dashboard from '../Dashboard/Dashboard.js'
+import Dashboard from '../Dashboard/Dashboard'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDoubleUp, faPen, faMobileAlt, faShareSquare, faBed, faComments, faTimesCircle, faEdit, faPowerOff, faKey } from '@fortawesome/free-solid-svg-icons'
 

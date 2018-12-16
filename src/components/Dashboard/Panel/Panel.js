@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {editDream} from '../../../actions/dream';
 import {createComment} from '../../../actions/comment';
 import {connect} from 'react-redux';
+import DemoDashboardModal from '../../DemoDashboardModal';
 
 export class Panel extends React.Component {
   constructor(props) {
@@ -13,13 +14,17 @@ export class Panel extends React.Component {
       commenting: false,
       title: this.props.title,
       content: this.props.content,
-      text: ''
+      text: '',
+      showTestMessage: false
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.handleUpdateDream = this.handleUpdateDream.bind(this);
     this.handleCreateComment = this.handleCreateComment.bind(this);
+    this.closeAlert = this.closeAlert.bind(this);
   };
+
+  closeAlert() { this.setState({ showTestMessage: false }); }
 
   onSubmit(event) {
     event.preventDefault();
@@ -64,18 +69,26 @@ export class Panel extends React.Component {
 
   handleUpdateDream(event) {
     event.preventDefault();
-    const id = event.target.id
-    const title = event.target.title.value;
-    const content = event.target.content.value;
-    this.props.dispatch(editDream(title, content, id));
-    this.setEditing();
+    if(this.props.username === 'testuser') {
+      this.setState({ showTestMessage: true });
+    } else {
+      const id = event.target.id
+      const title = event.target.title.value;
+      const content = event.target.content.value;
+      this.props.dispatch(editDream(title, content, id));
+      this.setEditing();
+    }
   }
 
   handleCreateComment(event) {
     event.preventDefault();
-    const id = event.target.id;
-    const comment = event.target.text.value;
-    this.props.dispatch(createComment(comment, id));
+    if(this.props.username === 'testuser') {
+      this.setState({ showTestMessage: true });
+    } else {
+      const id = event.target.id;
+      const comment = event.target.text.value;
+      this.props.dispatch(createComment(comment, id));
+    }
   }
 
   render() {
@@ -141,6 +154,7 @@ export class Panel extends React.Component {
 
     return(
       <div className="post_button_container">
+        <DemoDashboardModal showModal={this.state.showTestMessage} closeAlert={this.closeAlert} />
         <button
           style={{ display: this.props.userLoggedIn !== this.props.dreamAuthor? 'none': 'inline'}}
           onClick={() => this.setEditing()}

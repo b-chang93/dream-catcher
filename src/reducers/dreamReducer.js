@@ -19,7 +19,7 @@ function dreamReducer(state=[], action) {
       return [...filterDreams]
     case 'FETCH_DREAM_SUCCESS':
       return [
-        ...state, ...action.dreams
+        ...action.dreams
       ]
     default:
       return state;

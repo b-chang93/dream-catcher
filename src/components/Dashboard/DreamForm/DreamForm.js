@@ -3,17 +3,20 @@ import './DreamForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {createDream} from '../../../actions/dream';
 import { connect } from 'react-redux';
+import DemoDashboardModal from '../../DemoDashboardModal';
 
 export class DreamForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       createDream: false,
-      dreams: []
+      dreams: [],
+      showTestMessage: false
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.handleDreamCreation = this.handleDreamCreation.bind(this);
+    this.closeAlert = this.closeAlert.bind(this);
   };
 
   onSubmit(event) {
@@ -25,17 +28,24 @@ export class DreamForm extends React.Component {
     this.textInput.value = '';
   };
 
+  closeAlert() { this.setState({ showTestMessage: false }); }
+
   setCreateDream() {
     this.setState({
       createDream: !this.state.createDream
     });
+
   };
 
   handleDreamCreation(event) {
     event.preventDefault();
-    const title = event.target.title.value;
-    const content = event.target.content.value;
-    this.props.dispatch(createDream(title, content));
+    if(this.props.username === 'testuser') {
+      this.setState({ showTestMessage: true });
+    } else {
+      const title = event.target.title.value;
+      const content = event.target.content.value;
+      this.props.dispatch(createDream(title, content));
+    }
   }
 
   render() {
@@ -65,6 +75,7 @@ export class DreamForm extends React.Component {
 
     return(
       <div className="dream_button_container">
+        <DemoDashboardModal showModal={this.state.showTestMessage} closeAlert={this.closeAlert} />
         <button
           onClick={() => this.setCreateDream()}
           className="button create">
