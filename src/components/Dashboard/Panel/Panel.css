@@ -56,7 +56,7 @@
 .comment_text {
   display: inline;
   box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
-  padding: 15px 15px;
+  padding: 10px 15px;
 }
 
 .commentor {
@@ -118,7 +118,6 @@
   .comment_text {
     height: auto;
     font-size: 18px;
-    padding: 15px 15px;
   }
 
   .comment_text > p {

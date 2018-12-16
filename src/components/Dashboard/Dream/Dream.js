@@ -33,6 +33,9 @@ export class Dream extends React.Component {
   }
 
   handleDeleteDream(id) {
+    this.setState({
+      menu: false
+    })
     this.props.dispatch(removeDream(id));
   }
 
