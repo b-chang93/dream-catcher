@@ -7,7 +7,8 @@ function dreamReducer(state=[], action) {
         content: action.dream.content,
         creator: action.dream.creator,
         comments: action.dream.comments,
-        private: action.dream.private
+        private: action.dream.private,
+        created: action.dream.created
       }];
     case 'UPDATE_DREAM':
       let updatedDream = state.map((dream, index) => {

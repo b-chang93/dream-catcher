@@ -18,17 +18,19 @@
 
 .dream_title {
   margin: 20px 0;
-  margin-left: 15px;
+  margin-left: 5px;
   padding: 15px;
   text-align: center;
   font-size: 24px;
 }
 
-.create-by {
+.created-by {
   font-size: 12px;
   font-weight: bold;
   display: flex;
   padding: 5px 0;
+  position: relative;
+  top: -25px;
 }
 
 .avatar {
@@ -81,6 +83,16 @@
   height: 300px;
 }
 
+.dream_date {
+  width: auto;
+  height: 25px;
+  margin: 0;
+  padding: 10px 10px;
+  font-size: 14px;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
 .menu_button {
   background:none!important;
   color:inherit;
@@ -109,6 +121,7 @@ textarea {
   display: block;
   position: relative;
   top: 30px;
+  left: -15px;
   border: 1px solid black;
   width: 100px;
   height: 60px;
@@ -134,14 +147,14 @@ ul.options {
   background: #ADD8E6;
 }
 
-.dropdown-menu {
+.dropdown_menu {
   background-clip: padding-box;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0,0,0,.175);
-  width: auto;
+  width: auto !important;
 }
 
 @media only screen and (min-width: 700px) {
@@ -159,7 +172,7 @@ ul.options {
     line-height: 35px;
   }
 
-  .create-by {
+  .created-by {
     font-size: 20px;
   }
 

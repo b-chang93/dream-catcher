@@ -49,7 +49,10 @@ export class Dream extends React.Component {
   }
 
   render() {
+    let timestamp = this.props.dream.created
+    let date = new Date(timestamp).toDateString();
     let privateDream;
+    console.log(timestamp)
 
     if(this.props.dream.private) {
       privateDream = 'Unprivate'
@@ -62,7 +65,7 @@ export class Dream extends React.Component {
     let showMenu;
     if(this.state.menu) {
       showMenu =
-        <ul className="menu options dropdown-menu">
+        <ul className="menu options dropdown_menu">
           <li>
             <button className="menu_button delete" onClick={() => this.handleDeleteDream(this.props.dream.id)}>Delete</button>
           </li>
@@ -75,9 +78,10 @@ export class Dream extends React.Component {
     return(
       <div className="dream_panel">
         <div className="dream_info">
+          <p className="dream_date">{date}</p>
           <div className="dream_heading">
             <h2 className="dream_title">{this.props.dream.title}</h2>
-            <div className="create-by">
+            <div className="created-by">
               <img
               className="avatar"
               src={this.props.dream.creator.avatar}
