@@ -90,7 +90,9 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    let dreamsArray = this.props.dreams;
+    let dreamsArray = this.props.dreams.sort((a,b) => {
+      return new Date(b.created) - new Date(a.created);
+    });
 
     let filterPrivated = dreamsArray.filter(
       dream => dream.private === false || dream.creator._id === this.props.loggedIn);
