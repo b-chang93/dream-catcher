@@ -3,6 +3,7 @@ import './Panel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {editDream} from '../../../actions/dream';
 import {createComment} from '../../../actions/comment';
+import {removeComment} from '../../../actions/comment';
 import {connect} from 'react-redux';
 import DemoDashboardModal from '../../DemoDashboardModal';
 
@@ -15,13 +16,18 @@ export class Panel extends React.Component {
       title: this.props.title,
       content: this.props.content,
       text: '',
-      showTestMessage: false
+      showTestMessage: false,
+      commentMenu: false
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.handleUpdateDream = this.handleUpdateDream.bind(this);
     this.handleCreateComment = this.handleCreateComment.bind(this);
     this.closeAlert = this.closeAlert.bind(this);
+
+    this.showCommentMenu = this.showCommentMenu.bind(this);
+    this.optionsMenu = this.optionsMenu.bind(this);
+    this.handleDeleteComment = this.handleDeleteComment.bind(this);
   };
 
   closeAlert() { this.setState({ showTestMessage: false }); }
@@ -34,6 +40,12 @@ export class Panel extends React.Component {
     };
     this.textInput.value = '';
   };
+
+  showCommentMenu() {
+    this.setState({
+      commentMenu: !this.state.commentMenu
+    })
+  }
 
   setEditing() {
     this.setState({
@@ -91,6 +103,33 @@ export class Panel extends React.Component {
     }
   }
 
+  handleDeleteComment(id) {
+    if(this.props.username === 'testuser') {
+      this.setState({ showTestMessage: true });
+    } else {
+      this.props.dispatch(removeComment(id));
+    }
+  }
+
+  optionsMenu(id) {
+    let showMenu;
+    if(this.state.commentMenu) {
+      showMenu =
+        <ul className="menu options comment-dropdown-menu">
+          <li>
+            <button className="menu_button delete" onClick={() => this.handleDeleteComment(id)}>Delete</button>
+          </li>
+        </ul>
+    }
+
+    return (
+      <div
+        className="comment_menu_button menu_options"
+        onClick={this.showCommentMenu}>...
+        {showMenu}
+      </div>)
+  }
+
   render() {
     const numberComments = this.props.comments.filter(comment => comment.dream === this.props.dreamId).length;
     const enableEditing = this.state.editing;
@@ -111,6 +150,7 @@ export class Panel extends React.Component {
           <div className="comment_text">
             <p><span className="commentor">{comment.creator.firstName} {comment.creator.lastName} </span>{comment.text}</p>
           </div>
+          {this.props.userLoggedIn === comment.creator._id? this.optionsMenu(comment.id): null}
         </li>)
     });
 

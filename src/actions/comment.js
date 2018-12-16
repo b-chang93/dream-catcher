@@ -13,9 +13,10 @@ export const updateComment = (comment) => ({
 });
 
 export const DELETE_COMMENT= 'DELETE_COMMENT';
-export const deleteComment = (comment) => ({
+export const deleteComment = (comment, id) => ({
   type: DELETE_COMMENT,
-  comment
+  comment,
+  id: id
 });
 
 export const FETCH_COMMENT_SUCCESS = 'FETCH_COMMENT_SUCCESS';
@@ -65,5 +66,25 @@ export const fetchComment = () => (dispatch, getState) => {
     })
     .then(comment => {
       dispatch(fetchCommentSuccess(comment));
+    });
+}
+
+export const removeComment = (id) => (dispatch, getState) => {
+  console.log(id)
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/comments/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res;
+    })
+    .then(comment => {
+      dispatch(deleteComment(comment, id));
     });
 }
