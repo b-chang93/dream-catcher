@@ -52,7 +52,6 @@ export class Dream extends React.Component {
     let timestamp = this.props.dream.created
     let date = new Date(timestamp).toDateString();
     let privateDream;
-    console.log(timestamp)
 
     if(this.props.dream.private) {
       privateDream = 'Unprivate'

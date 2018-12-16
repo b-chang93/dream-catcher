@@ -45,6 +45,7 @@ export class DreamForm extends React.Component {
       const title = event.target.title.value;
       const content = event.target.content.value;
       this.props.dispatch(createDream(title, content));
+      this.setCreateDream();
     }
   }
 
