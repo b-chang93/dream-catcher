@@ -30,7 +30,7 @@
 
 .comment_text {
   float: left;
-  max-width: 77%;
+  max-width: 58%;
   box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.6);
   padding: 10px 15px;
 }
@@ -48,7 +48,6 @@
 }
 
 .comment_menu_button {
-  /* display: inline; */
   float: left;
   background:none!important;
   color:inherit;
@@ -73,9 +72,22 @@
 }
 
 @media only screen and (min-width: 300px) and (max-width: 700px){
+  .menu {
+    top: 0px;
+    left: 10px;
+  }
+
   .comment_text {
-    max-height: 100px;
+    max-height: 150px;
     overflow:auto;
+    padding: 10px 10px;
+
+    max-width: 66%;
+  }
+
+  .menu_options {
+    width: 20%;
+    height: 15%;
   }
 }
 
@@ -96,6 +108,7 @@
   .comment_text {
     height: auto;
     font-size: 18px;
+    max-width: 80%;
   }
 
   .comment_text > p {
@@ -104,5 +117,9 @@
 
   .post_edit_button, .post_comment_button {
     font-size: 20px;
+  }
+
+  .menu_options {
+    width: 10%;
   }
 }
