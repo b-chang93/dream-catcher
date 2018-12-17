@@ -70,7 +70,6 @@ export const fetchComment = () => (dispatch, getState) => {
 }
 
 export const removeComment = (id) => (dispatch, getState) => {
-  console.log(id)
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/comments/${id}`, {
     method: 'DELETE',
