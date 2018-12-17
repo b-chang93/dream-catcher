@@ -45,6 +45,7 @@ export class DreamForm extends React.Component {
       const title = event.target.title.value;
       const content = event.target.content.value;
       this.props.dispatch(createDream(title, content));
+      this.setCreateDream();
     }
   }
 
@@ -68,7 +69,7 @@ export class DreamForm extends React.Component {
           placeholder="Write about your dream here!"
           className="create_dream_content"
           ></textarea>
-          <button type="submit" className="button create">Dream</button>
+          <button type="submit" className="button create">Log Dream</button>
         </form>
       </div>
     };
@@ -80,7 +81,7 @@ export class DreamForm extends React.Component {
           onClick={() => this.setCreateDream()}
           className="button create">
           {!enableCreateDream ?
-            <span className="post-icons"><FontAwesomeIcon icon="edit"/>Dream</span>:
+            <span className="post-icons"><FontAwesomeIcon icon="edit"/>Create Dream</span>:
             <span className="post-icons"><FontAwesomeIcon icon="times-circle"/>Close</span>}
         </button>
         {showCreateDreamField}

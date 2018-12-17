@@ -16,10 +16,11 @@ export class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      myDreams: false,
+      showMyDreams: false,
       menu: false,
       private: false,
-      showModal: false
+      showModal: false,
+      dashboard: true
     }
 
     this.toggleButton = this.toggleButton.bind(this);
@@ -58,7 +59,7 @@ export class Dashboard extends React.Component {
 
   toggleButton() {
     this.setState({
-      myDreams: !this.state.myDreams
+      showMyDreams: !this.state.showMyDreams
     })
   }
 
@@ -89,7 +90,9 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    let dreamsArray = this.props.dreams;
+    let dreamsArray = this.props.dreams.sort((a,b) => {
+      return new Date(b.created) - new Date(a.created);
+    });
 
     let filterPrivated = dreamsArray.filter(
       dream => dream.private === false || dream.creator._id === this.props.loggedIn);
@@ -97,16 +100,16 @@ export class Dashboard extends React.Component {
     let filterMyDreams = dreamsArray.filter(
       dream => dream.creator._id === this.props.loggedIn);
 
-    let showMyDreams = this.state.myDreams;
-    
+    let showMyDreams = this.state.showMyDreams;
+
     return (
       <div className="Dashboard">
       <DashboardModal showModal={this.state.showModal} closeAlert={this.closeAlert} />
-      <Header title='Dream Catcher' myDreams={this.state.myDreams} toggler={this.toggleButton}/>
+      <Header title='Dream Catcher' dashboard={this.state.dashboard} toggler={this.toggleButton}/>
         <div className="DreamContainer">
           <DreamForm username={this.props.username}/>
           <ul className="dreams_post_list">{this.renderDreams(showMyDreams, filterMyDreams, filterPrivated)}</ul>
-          <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
+          <ScrollButton/>
         </div>
       </div>
     );
@@ -125,8 +128,7 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     protectedData: state.protectedData.data,
     dreams: state.dreams,
-    comments: state.comments,
-    myDreams: state.showMyDreams
+    comments: state.comments
   };
 };
 

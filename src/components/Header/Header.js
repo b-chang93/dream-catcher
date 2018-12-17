@@ -6,8 +6,8 @@ import Toggle from './Toggle/Toggle';
 export default function Header(props) {
   return (
     <div className="Header">
-      <a className="jumbotron_title" href="/">{props.title}</a>
-      <Toggle myDreams={props.myDreams} toggler={props.toggler}/>
+      <a className="jumbotron_title" href="/dashboard">{props.title}</a>
+      {(props.dashboard)? <Toggle toggler={props.toggler}/>: null}
       <Logout/>
     </div>
   );

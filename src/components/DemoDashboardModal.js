@@ -7,7 +7,8 @@ export default function DemoDashboardModal(props) {
         <Modal.Title> <b>Demo Dashboard</b></Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p><b>Unfortunately, this is just a demo for you to see what a Dream Catcher project looks like.</b></p>
+        <p><b>Trying to write about a dream or leave a comment?</b></p>
+        <p>Unfortunately, this is just a demo for you to see what a Dream Catcher looks like.</p>
         <p><b>To create your own dream:</b></p>
         <ul>
           <li>Hit the logout button on the top right</li>

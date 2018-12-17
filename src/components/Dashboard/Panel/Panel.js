@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {editDream} from '../../../actions/dream';
 import {createComment} from '../../../actions/comment';
 import {connect} from 'react-redux';
+import Comments from './Comments/Comments';
 import DemoDashboardModal from '../../DemoDashboardModal';
 
 export class Panel extends React.Component {
@@ -15,7 +16,7 @@ export class Panel extends React.Component {
       title: this.props.title,
       content: this.props.content,
       text: '',
-      showTestMessage: false
+      showTestMessage: false,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -91,28 +92,22 @@ export class Panel extends React.Component {
     }
   }
 
+  renderComments() {
+    return this.props.comments
+      .filter(comment => comment.dream === this.props.dreamId)
+      .map((comment, index) => (
+        <li className="user-comment" key={index}>
+          <Comments userLoggedIn={this.props.userLoggedIn}comment={comment}/>
+        </li>
+    ));
+  }
+
   render() {
     const numberComments = this.props.comments.filter(comment => comment.dream === this.props.dreamId).length;
     const enableEditing = this.state.editing;
     const enableComments = this.state.commenting;
     let showCommentBox;
     let showEditBox;
-
-    let filteredComments = this.props.comments
-      .filter(comment => comment.dream === this.props.dreamId)
-      .map((comment, index) => {
-      return(
-        <li className="all_comments" key={index}>
-        <img
-          src={comment.creator.avatar}
-          className="user_avatar_in_comment"
-          alt="user-avatar"
-        />
-          <div className="comment_text">
-            <p><span className="commentor">{comment.creator.firstName} {comment.creator.lastName} </span>{comment.text}</p>
-          </div>
-        </li>)
-    });
 
     if (enableComments) {
       showCommentBox =
@@ -126,10 +121,10 @@ export class Panel extends React.Component {
             onChange={e => this.createComment(e.target.value)}></textarea>
           <button className="button comment">Leave Comment</button>
         </form>
-        <h2 className="comments_header"><FontAwesomeIcon icon="comments"/> Comments</h2>
-        <ul className="comments_section">
-          {filteredComments}
-        </ul>
+        <div className="comments_on_post">
+          <h2 className="comments_header"><FontAwesomeIcon icon="comments"/> Comments</h2>
+          <ul className="dreams_post_list">{this.renderComments()}</ul>
+        </div>
       </div>
     };
 
@@ -177,7 +172,7 @@ export class Panel extends React.Component {
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     comments: state.comments
   };

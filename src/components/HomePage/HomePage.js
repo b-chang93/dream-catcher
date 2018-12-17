@@ -5,6 +5,7 @@ import IntroSection from './IntroSection/IntroSection'
 import SignUp from './SignUp/SignUp'
 import Login from './Login/Login'
 import Demo from './Demo';
+import Header from '../Header/Header.js'
 
 export default class HomePage extends React.Component {
   constructor(props) {
