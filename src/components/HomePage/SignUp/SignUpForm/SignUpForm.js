@@ -5,6 +5,7 @@ import {login} from '../../../../actions/auth';
 import Input from '../../../Input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../../../validators';
 import AlertMessage from '../../../AlertMessage/AlertMessage';
+const usernameLength = length({min: 5, max: 15});
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
@@ -65,7 +66,7 @@ export class SignUpForm extends React.Component {
             component={Input}
             type="text"
             name="username"
-            validate={[required, nonEmpty, isTrimmed]}
+            validate={[required, usernameLength, isTrimmed]}
             placeholder="username"
           />
           <label htmlFor="password">Password</label>
