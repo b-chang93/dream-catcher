@@ -23,10 +23,10 @@ fetchUser
 const mockFetchCommentAction = {
     type: 'FETCH_COMMENT_SUCCESS'
 };
-jest.mock('../../actions/protected-data', () => Object.assign({},
-    require.requireActual('../../actions/protected-data'),
+jest.mock('../../actions/comment', () => Object.assign({},
+    require.requireActual('../../actions/comment'),
     {
-        fetchUser: jest.fn().mockImplementation(() => {
+        fetchComment: jest.fn().mockImplementation(() => {
             return mockFetchCommentAction;
         })
     }
@@ -35,10 +35,10 @@ jest.mock('../../actions/protected-data', () => Object.assign({},
 const mockFetchUserAction = {
     type: 'FETCH_USER_SUCCESS'
 };
-jest.mock('../../actions/comment', () => Object.assign({},
-    require.requireActual('../../actions/comment'),
+jest.mock('../../actions/protected-data', () => Object.assign({},
+    require.requireActual('../../actions/protected-data'),
     {
-        fetchComment: jest.fn().mockImplementation(() => {
+        fetchUser: jest.fn().mockImplementation(() => {
             return mockFetchUserAction;
         })
     }
