@@ -33,7 +33,6 @@ export class Comments extends React.Component {
   }
 
   optionsMenu(id) {
-    console.log(id)
     let showMenu =
       <ul className="menu options comment-dropdown-menu">
         <li>

@@ -1,10 +1,12 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import {Field, reduxForm, focus, SubmissionError} from 'redux-form';
+import {connect} from 'react-redux';
 import {registerUser} from '../../../../actions/users';
 import {login} from '../../../../actions/auth';
 import Input from '../../../Input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../../../validators';
 import AlertMessage from '../../../AlertMessage/AlertMessage';
+const usernameLength = length({min: 5, max: 15});
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
@@ -33,7 +35,7 @@ export class SignUpForm extends React.Component {
     let error;
     if (this.props.error) {
       error = (
-        <AlertMessage class="alert" showModal={this.state.showAlert} closeAlert={this.closeAlert} error={this.props.error}/>
+        <AlertMessage class="alert" showModal={this.state.showAlert} error={this.props.error}/>
       );
     }
 
@@ -65,7 +67,7 @@ export class SignUpForm extends React.Component {
             component={Input}
             type="text"
             name="username"
-            validate={[required, nonEmpty, isTrimmed]}
+            validate={[required, usernameLength, isTrimmed]}
             placeholder="username"
           />
           <label htmlFor="password">Password</label>
@@ -97,8 +99,14 @@ export class SignUpForm extends React.Component {
   }
 }
 
-export default reduxForm({
+const mapStateToProps = state => ({
+  formError: state.form.registration
+});
+
+SignUpForm = reduxForm({
     form: 'registration',
     onSubmitFail: (errors, dispatch) =>
       dispatch(focus('registration', Object.keys(errors)[0]))
 })(SignUpForm);
+
+export default connect(mapStateToProps)(SignUpForm);

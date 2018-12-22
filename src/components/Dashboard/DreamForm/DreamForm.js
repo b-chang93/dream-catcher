@@ -10,7 +10,6 @@ export class DreamForm extends React.Component {
     super(props);
     this.state = {
       createDream: false,
-      dreams: [],
       showTestMessage: false
     };
 
@@ -55,9 +54,8 @@ export class DreamForm extends React.Component {
 
     if (enableCreateDream) {
       showCreateDreamField =
-      <div className="comment_container">
         <form className="dream_form"
-        onSubmit={this.handleDreamCreation}>
+          onSubmit={this.handleDreamCreation}>
           <input
             ref={input => this.textInput = input}
             className="title_your_dream dream_title_field"
@@ -65,13 +63,12 @@ export class DreamForm extends React.Component {
             name="title">
           </input>
           <textarea
-          name="content"
-          placeholder="Write about your dream here!"
-          className="create_dream_content"
+            name="content"
+            placeholder="Write about your dream here!"
+            className="create_dream_content"
           ></textarea>
           <button type="submit" className="button create">Log Dream</button>
         </form>
-      </div>
     };
 
     return(

@@ -114,7 +114,7 @@ export class Panel extends React.Component {
       <div className="comment_container">
         <form id={this.props.dreamId} className="dream_form" onSubmit={this.handleCreateComment}>
           <textarea
-            className="dream_updateable_fields"
+            className="comment_box dream_updateable_fields"
             name="text"
             placeholder="Leave a comment about the dream!"
             value={this.state.text}

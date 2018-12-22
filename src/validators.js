@@ -1,3 +1,5 @@
+import { SubmissionError } from 'redux-form'
+
 export const required = value => (value ? undefined : 'Required');
 export const nonEmpty = value =>
     value.trim() !== '' ? undefined : 'Cannot be empty';
@@ -14,4 +16,4 @@ export const length = length => value => {
 export const matches = field => (value, allValues) =>
     field in allValues && value.trim() === allValues[field].trim()
         ? undefined
-        : 'Does not match';
+        : 'Passwords do not match';
