@@ -5,7 +5,9 @@ import {Redirect} from 'react-router-dom';
 export default () => Component => {
     function RequiresLogin(props) {
         const {authenticating, loggedIn, error, ...passThroughProps} = props;
-        if (!loggedIn || error) {
+        if (authenticating) {
+            return null;
+        } else if (!loggedIn || error) {
             return <Redirect to="/" />;
         }
 
