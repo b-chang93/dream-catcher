@@ -2,8 +2,10 @@
 A lightweight app that enables users journal their personal dreams. The dreams are displayed to all, but the author can easily private their dreams to only be seen by themselves.
 # Technology
 HTML/CSS/Javascript/React/Express/NodeJs
-# Screenshots
 
+BE: https://github.com/b-chang93/node-dream-catcher/
+# Screenshots
+![Screenshot](public/dream-catcher.png) 
 # Live Repo
 https://the-dream-catcher.herokuapp.com/
 # Features
