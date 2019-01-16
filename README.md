@@ -5,7 +5,7 @@ HTML/CSS/Javascript/React/Express/NodeJs
 
 BE: https://github.com/b-chang93/node-dream-catcher/
 # Screenshots
-![Screenshot](public/dream-catcher.png) 
+![Screenshot](public/dream-catcher.gif) 
 # Live Repo
 https://the-dream-catcher.herokuapp.com/
 # Features
